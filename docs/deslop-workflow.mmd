@@ -1,0 +1,18 @@
+flowchart TD
+    A["Create flow folder"]
+    B["Add context to background/"]
+    C["deslop-understand"]
+    D["Review docs/documentation.md"]
+    E["deslop-generate-acceptance-criteria"]
+    F["Review docs/acceptance-criteria.md"]
+    G{"Need multiple solution ideas?"}
+    H["deslop-brainstorm-proposals"]
+    I["deslop-propose"]
+    J["deslop-plan-prs"]
+    K["Implement"]
+    L["deslop-verify-implementation"]
+
+    A --> B --> C --> D --> E --> F --> G
+    G -- "Yes" --> H --> I
+    G -- "No" --> I
+    I --> J --> K --> L

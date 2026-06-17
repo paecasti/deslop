@@ -14,26 +14,9 @@ Each Deslop run lives in a flow folder. The folder is the unit of work.
 
 ## Workflow
 
-```mermaid
-flowchart TD
-    A["Create flow folder"]
-    B["Add context to background/"]
-    C["$deslop-understand"]
-    D["Review docs/documentation.md"]
-    E["$deslop-generate-acceptance-criteria"]
-    F["Review docs/acceptance-criteria.md"]
-    G{"Need multiple solution ideas?"}
-    H["$deslop-brainstorm-proposals"]
-    I["$deslop-propose"]
-    J["$deslop-plan-prs"]
-    K["Implement"]
-    L["$deslop-verify-implementation"]
+![Deslop workflow](docs/deslop-workflow.svg)
 
-    A --> B --> C --> D --> E --> F --> G
-    G -- "Yes" --> H --> I
-    G -- "No" --> I
-    I --> J --> K --> L
-```
+The editable Mermaid source for this diagram is in `docs/deslop-workflow.mmd`.
 
 ## Skills
 
