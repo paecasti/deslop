@@ -1,6 +1,6 @@
 ---
 name: deslop-verify-implementation
-description: Verify completed Deslop implementation code against one proposal, documentation, and acceptance criteria from a flow folder. Use when explicitly invoked as $deslop-verify-implementation; do not run checks or fix failures.
+description: Verify completed Deslop implementation against one proposal, documentation, and acceptance criteria from a flow folder. Use when explicitly invoked as $deslop-verify-implementation; create unit tests when the architecture supports them, otherwise inspect code.
 ---
 
 # Deslop Verify Implementation

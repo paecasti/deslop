@@ -39,10 +39,11 @@ A lightweight proposal brainstorm at `<flow-folder>/proposals/brainstorm-proposa
 |----------------|--------------|-------|
 | effort         | low/mid/high |       |
 | design_clarity | low/mid/high |       |
+| architectural_fit | low/mid/high |       |
 | estimated_time | e.g. 2-4 h   |       |
 ```
 
-8. Set `effort`, `design_clarity`, and `estimated_time` for each idea.
+8. Set `effort`, `design_clarity`, `architectural_fit`, and `estimated_time` for each idea.
 9. End by telling the user the brainstorm file created and that any idea can be turned into a full proposal with `$deslop-propose`.
 10. Suggest running `$deslop-propose` with the chosen brainstorm idea as the proposal direction.
 
@@ -71,6 +72,7 @@ A lightweight proposal brainstorm at `<flow-folder>/proposals/brainstorm-proposa
 **Metrics:**
 - Set `effort` from implementation complexity, moving parts, side effects, and codebase familiarity.
 - Set `design_clarity` from coupling, concepts added, and ease of explanation.
+- Set `architectural_fit` from alignment with existing architecture, conventions, boundaries, naming, and code style.
 - Set `estimated_time` as a rough developer planning range in hours or days.
 
 **Next step:**

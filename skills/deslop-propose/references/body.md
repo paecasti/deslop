@@ -33,6 +33,7 @@ One decision-ready proposal at `<flow-folder>/proposals/proposal-<idea>.md` deri
 |----------------|--------------|--------------------------------------------|
 | effort         | low/mid/high | Implementation complexity for a developer  |
 | design_clarity | low/mid/high | How clean and maintainable the design is   |
+| architectural_fit | low/mid/high | How naturally it fits existing architecture and conventions |
 | estimated_time | e.g. 2-4 h   | Rough range based on what is already known |
 ```
 
@@ -60,6 +61,7 @@ One decision-ready proposal at `<flow-folder>/proposals/proposal-<idea>.md` deri
 **Metrics:**
 - Set `effort` from implementation complexity, moving parts, side effects, and codebase familiarity.
 - Set `design_clarity` from coupling, concepts added, and ease of explanation.
+- Set `architectural_fit` from alignment with existing architecture, conventions, boundaries, naming, and code style.
 - Set `estimated_time` as a rough developer planning range in hours or days.
 
 **Next step:**
