@@ -1,8 +1,52 @@
 # Deslop
 
-Deslop is a workflow for turning an unclear idea into an implementable and verifiable proposal. It is designed for brownfield work: start with messy context, document the real problem, define acceptance criteria, compare or choose an approach, plan the implementation, and verify the result.
+Deslop is a simple Spec-Driven Development workflow for turning unclear software work into documented, acceptance-driven, plannable, and verifiable decisions.
 
-Each Deslop run lives in a flow folder. The folder is the unit of work.
+Most SDD workflows start from a reasonable intention: covering the whole development cycle. They try to help you define specifications, plan work, generate tasks, implement, validate, document, and maintain consistency. The problem is that, in trying to become complete systems, they also become prescriptive systems. They do not only give you tools; they tell you how to think, how to structure the problem, which steps to follow, which artifacts to produce, and in what order to work.
+
+Deslop starts from a different premise: the system should not be the protagonist. The software engineer should be.
+
+## Why Deslop Exists
+
+In many SDD workflows, the technology tries to take the center. The system presents itself as an almost perfect machine for transforming intent into software. The more complete the system is, the more it seems to promise that the correct process will solve the problem.
+
+But in practice, real software problems are not solved by a workflow alone. They are solved with judgment: understanding context, making decisions, accepting tradeoffs, choosing tools, discarding paths, adapting to constraints, and knowing when to skip steps.
+
+Deslop does not try to replace that judgment. It tries to support it.
+
+That is why Deslop exists: to make work clearer before implementation, without turning that clarity into a heavy system that forces the user to work in only one way. The workflow helps transform a vague idea into reviewable documentation, acceptance criteria, proposals, plans, and verification. But control over the decisions stays with the user.
+
+## Philosophy
+
+Deslop is intentionally simple. It does not try to impose a single way to build software. It does not require a specific technology, implementation style, architecture, planning format, or problem-solving approach.
+
+That simplicity is what makes it versatile. A smaller workflow is easier to understand, easier to modify, and easier to apply to different kinds of problems, different working styles, and different sizes of implementation. It can be used for a small bug, a behavior change, an architecture decision, a refactor, or a multi-PR plan without forcing all of those cases into a large process.
+
+Deslop also does not try to be the most technologically complete workflow possible, because that kind of completeness often reduces versatility. The more a system tries to cover, the more it starts requiring you to work inside its own assumptions.
+
+The distinction matters:
+
+Other workflows say: "this is the system; work inside it."
+
+Deslop says: "these are tools; use them to think better."
+
+## What Deslop Tries To Solve
+
+Deslop tries to solve the point where agents usually fail the most: the gap between loosely structured human intent and an implementation that actually satisfies what was expected.
+
+To do that, it does not try to capture the entire development process. It focuses on the contract that matters most before implementation starts: what must be true when the work is finished.
+
+The center of Deslop is acceptance criteria. First, it reads the user's input and background material. Then it generates draft documentation that makes the problem, constraints, concepts, and expected behavior explicit. From that documentation, it generates acceptance criteria. Those criteria do not dictate how to implement, but they do clarify what must be satisfied.
+
+From there, Deslop can help propose, plan, and verify. But not because the workflow owns the process. It can help because the engineer has already defined what it means for the work to be done well.
+
+Everything outside that core can be complemented with whatever technology, skill, agent, or external process the user considers necessary. You can pair Deslop with a separate implementation skill, a documentation refinement skill, a code review agent, a testing tool, a team-specific workflow, or any project-specific system.
+
+Deslop does not compete with those tools or require them to fit into a closed ecosystem. It works as a lightweight acceptance-driven backbone, and lets the engineer decide what to connect around it.
+
+## Workflow
+
+Each Deslop run lives in a flow folder. That folder is the unit of work.
 
 ```txt
 <project>/<flows-container>/<flow-name>/
@@ -10,83 +54,24 @@ Each Deslop run lives in a flow folder. The folder is the unit of work.
   docs/
   proposals/
   plan/
+  verification/
 ```
 
-## Workflow
+The main flow is intentionally short:
 
-![Deslop workflow](docs/deslop-workflow.svg)
+1. `$deslop-understand` reads the user's input and the material in `background/`, then generates `docs/documentation.md` as draft documentation.
+2. The user reviews `docs/documentation.md` and decides whether it represents the problem correctly.
+3. `$deslop-generate-acceptance-criteria` uses that documentation to generate `docs/acceptance-criteria.md`.
+4. The user reviews the acceptance criteria and decides whether they are the right contract.
+5. `$deslop-brainstorm-proposals` or `$deslop-propose` uses the documentation and acceptance criteria to explore or choose a solution direction.
+6. `$deslop-plan-prs` turns an accepted proposal into a PR-by-PR implementation plan.
+7. `$deslop-verify-implementation` compares the completed implementation against the proposal, documentation, and acceptance criteria.
 
-The editable Mermaid source for this diagram is in `docs/deslop-workflow.mmd`.
+The important boundary is that acceptance criteria become the downstream contract. Once they exist, planning and verification should be judged against them, not against a loose memory of the original request.
 
-## Skills
+That is the philosophy: less system, more judgment. Less technological perfection, more user control. Deslop does not try to be the best universal process for building software. It tries to be a set of simple tools that help engineers keep clarity, make decisions, and verify results without losing freedom.
 
-- `$deslop-help`: Explains the Deslop workflow.
-- `$deslop-understand`: Reads `background/` and creates `docs/documentation.md`.
-- `$deslop-generate-acceptance-criteria`: Turns `docs/documentation.md` into `docs/acceptance-criteria.md`.
-- `$deslop-brainstorm-proposals`: Generates brief solution directions for comparison. Defaults to 5 ideas unless a count is specified.
-- `$deslop-propose`: Creates one decision-ready proposal under `proposals/`.
-- `$deslop-plan-prs`: Converts a completed proposal into a PR-by-PR execution plan under `plan/`.
-- `$deslop-verify-implementation`: Checks completed implementation code against the proposal, documentation, and acceptance criteria.
+## Skill Design
 
-## Typical Usage
+Deslop skills follow the same philosophy as the workflow: they should be small, readable, validation-first, and easy to adapt. See [SKILL-DESIGN.md](SKILL-DESIGN.md) for the style decisions behind the skills.
 
-1. Create a flow folder, for example:
-
-   ```txt
-   flows/improve-onboarding/
-   ```
-
-2. Put initial context in `background/`: notes, requirements, bug reports, screenshots, current behavior, prior decisions, constraints, or any other useful material.
-
-3. Build shared understanding:
-
-   ```txt
-   $deslop-understand flows/improve-onboarding
-   ```
-
-   This creates `docs/documentation.md`.
-
-4. Review `docs/documentation.md`. Resolve missing decisions or ambiguities before moving forward.
-
-5. Generate acceptance criteria:
-
-   ```txt
-   $deslop-generate-acceptance-criteria flows/improve-onboarding
-   ```
-
-   This creates `docs/acceptance-criteria.md`.
-
-6. Optionally brainstorm solution directions:
-
-   ```txt
-   $deslop-brainstorm-proposals flows/improve-onboarding
-   ```
-
-7. Create a decision-ready proposal:
-
-   ```txt
-   $deslop-propose flows/improve-onboarding
-   ```
-
-   You can include a preferred direction in the invocation if one of the brainstormed ideas should guide the proposal.
-
-8. Plan implementation as PRs:
-
-   ```txt
-   $deslop-plan-prs flows/improve-onboarding
-   ```
-
-9. Implement the plan. Deslop does not require a specific implementation skill for this stage.
-
-10. Verify the completed work:
-
-    ```txt
-    $deslop-verify-implementation flows/improve-onboarding
-    ```
-
-## Notes
-
-- Always pass an explicit flow folder path to Deslop skills.
-- Keep background material inside `background/` so later stages can trace decisions back to source context.
-- Review generated documentation and acceptance criteria before proposals; later stages assume those files are accurate.
-- If there is more than one proposal, specify which proposal should be planned or verified.

@@ -58,11 +58,5 @@ One decision-ready proposal at `<flow-folder>/proposals/proposal-<idea>.md` deri
 - Do not create an execution plan, task breakdown, or implementation.
 - Read source files only when the documented understanding is insufficient to avoid a flawed proposal.
 
-**Metrics:**
-- Set `effort` from implementation complexity, moving parts, side effects, and codebase familiarity.
-- Set `design_clarity` from coupling, concepts added, and ease of explanation.
-- Set `architectural_fit` from alignment with existing architecture, conventions, boundaries, naming, and code style.
-- Set `estimated_time` as a rough developer planning range in hours or days.
-
 **Next step:**
 - Point the user to `$deslop-plan-prs` after a proposal is accepted or chosen.
