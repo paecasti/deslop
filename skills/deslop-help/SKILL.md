@@ -1,5 +1,6 @@
 ---
 name: deslop-help
+disable-model-invocation: true
 description: Explain how to use the Deslop workflow in a clear fixed user-facing response. Use only when explicitly invoked as $deslop-help or when the user asks for help understanding the Deslop workflow.
 ---
 

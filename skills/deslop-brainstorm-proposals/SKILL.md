@@ -1,5 +1,6 @@
 ---
 name: deslop-brainstorm-proposals
+disable-model-invocation: true
 description: Brainstorm brief solution proposal ideas from an explicit Deslop root. Use only when explicitly invoked as $deslop-brainstorm-proposals with a Deslop root; default to 5 ideas unless the user specifies a count.
 ---
 
