@@ -46,10 +46,10 @@ Deslop does not compete with those tools or require them to fit into a closed ec
 
 ## Workflow
 
-Each Deslop run lives in a flow folder. That folder is the unit of work.
+Each Deslop run lives in a flow folder. That folder is the unit of work, and it can be any folder the user chooses for that run.
 
 ```txt
-<project>/<flows-container>/<flow-name>/
+<flow-folder>/
   background/
   docs/
   proposals/

@@ -17,12 +17,12 @@ Use the first available model in the recommended mid-tier hierarchy, and define 
 1. Require an explicit flow folder path before working:
 
 ```txt
-<project>/<flows-container>/<flow-name>
+<flow-folder>
 ```
 
 2. Capture any extra user directive from the invocation as proposal direction.
 3. If the user gives no proposal direction, do not ask for one; choose the best solution direction during analysis.
-4. Treat the flow folder as the unit of work, not the project root.
+4. Treat the flow folder as any folder the user chooses for this Deslop run.
 5. Require documentation from current context or this file:
 
 ```txt

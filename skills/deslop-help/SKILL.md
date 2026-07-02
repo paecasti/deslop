@@ -10,14 +10,17 @@ When invoked, reply with the fixed text below. Do not inspect files, create fold
 ````md
 Deslop is a workflow for turning an unclear idea into an implementable and verifiable proposal, with each stage saved inside a flow folder.
 
+A flow folder can be any folder you choose for one Deslop run.
+
 Recommended structure:
 
 ```txt
-<project>/<flows-container>/<flow-name>/
+<flow-folder>/
   background/
   docs/
   proposals/
   plan/
+  verification/
 ```
 
 Skill summary:
@@ -33,7 +36,7 @@ Workflow diagram:
 
 ```mermaid
 flowchart TD
-    A["Create flow folder<br/>./flows-container/flow-name/"]
+    A["Choose any flow folder"]
     B["Add context<br/>background/"]
     C["$deslop-understand"]
     D["Refine<br/>docs/documentation.md"]
@@ -54,7 +57,7 @@ flowchart TD
 
 Typical usage:
 
-1. Create a flow folder, for example `flows/improve-onboarding/`.
+1. Create or choose any flow folder, for example `improve-onboarding/` or `flows/improve-onboarding/`.
 2. Put the initial context in `background/`: notes, requirements, problems, screenshots, prior decisions, or any other relevant material.
 3. Run `$deslop-understand <flow-folder>` to generate `docs/documentation.md`.
 4. Review the documentation. If decisions are missing or ambiguities remain, resolve them before moving forward.

@@ -19,10 +19,10 @@ Run these checks before verification:
 1. Require an explicit flow folder path before working:
 
 ```txt
-<project>/<flows-container>/<flow-name>
+<flow-folder>
 ```
 
-2. Treat the flow folder as the unit of work, not the project root.
+2. Treat the flow folder as any folder the user chooses for this Deslop run.
 3. Require this existing Deslop folder structure:
 
 ```txt
