@@ -62,7 +62,7 @@ A sequential PR execution plan under `<flow-folder>/plan/` with `PLAN.md`, one `
 **Input:**
 - Do not read proposal, documentation, or acceptance criteria files when their contents are already available in current context.
 - Do not read every proposal file when the selected proposal is already explicit.
-- Do not use the `background/` folder to create the plan.
+- Do not use the original `<background>/` source folder to create the plan.
 
 **Output:**
 - Write real files under `<flow-folder>/plan/`; do not only answer in chat.

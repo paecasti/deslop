@@ -44,7 +44,7 @@ One decision-ready proposal at `<flow-folder>/proposals/proposal-<idea>.md` deri
 ## Gotcha list
 
 **Input:**
-- Do not use the `background/` folder to create the proposal.
+- Do not use the original `<background>/` source folder to create the proposal.
 - Do not read `documentation.md`, `acceptance-criteria.md`, or existing proposal files when their contents are already available in current context.
 - Do not continue when acceptance criteria are neither in context nor available in `acceptance-criteria.md`.
 - Use `acceptance-criteria.md` as required decision input.

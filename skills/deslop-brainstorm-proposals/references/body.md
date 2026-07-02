@@ -50,7 +50,7 @@ A lightweight proposal brainstorm at `<flow-folder>/proposals/brainstorm-proposa
 ## Gotcha list
 
 **Input:**
-- Do not use the `background/` folder to brainstorm proposals.
+- Do not use the original `<background>/` source folder to brainstorm proposals.
 - Do not continue when documentation is neither in context nor available in `documentation.md`.
 - Do not continue when acceptance criteria are neither in context nor available in `acceptance-criteria.md`.
 - Do not read `documentation.md` before the validation process passes.

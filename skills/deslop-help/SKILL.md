@@ -16,7 +16,7 @@ Recommended structure:
 
 ```txt
 <flow-folder>/
-  background/
+  <background>/
   docs/
   proposals/
   plan/
@@ -25,7 +25,7 @@ Recommended structure:
 
 Skill summary:
 
-- `$deslop-understand`: Reads background/ and produces `docs/documentation.md`.
+- `$deslop-understand`: Reads a user-specified `<background>` folder and produces `docs/documentation.md` in its parent flow folder.
 - `$deslop-generate-acceptance-criteria`: Turns the documentation into concrete acceptance criteria.
 - `$deslop-brainstorm-proposals`: Generates several brief solution directions for comparison.
 - `$deslop-propose`: Creates one decision-ready proposal under `proposals/`.
@@ -37,7 +37,7 @@ Workflow diagram:
 ```mermaid
 flowchart TD
     A["Choose any flow folder"]
-    B["Add context<br/>background/"]
+    B["Add context<br/><background>/"]
     C["$deslop-understand"]
     D["Refine<br/>docs/documentation.md"]
     E["$deslop-generate-acceptance-criteria"]
@@ -58,8 +58,8 @@ flowchart TD
 Typical usage:
 
 1. Create or choose any flow folder, for example `improve-onboarding/` or `flows/improve-onboarding/`.
-2. Put the initial context in `background/`: notes, requirements, problems, screenshots, prior decisions, or any other relevant material.
-3. Run `$deslop-understand <flow-folder>` to generate `docs/documentation.md`.
+2. Put the initial context in any background folder inside it, for example `priordata/`, `context/`, or `background/`.
+3. Run `$deslop-understand <background>` to generate `docs/documentation.md` in the parent flow folder.
 4. Review the documentation. If decisions are missing or ambiguities remain, resolve them before moving forward.
 5. Run `$deslop-generate-acceptance-criteria <flow-folder>` to create `docs/acceptance-criteria.md`.
 6. Optionally run `$deslop-brainstorm-proposals <flow-folder>` if you want to compare several solution ideas.

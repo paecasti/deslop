@@ -22,7 +22,7 @@ This prevents common failures: using the wrong folder, inventing missing informa
 
 Examples:
 
-- understanding needs a flow folder and background material;
+- understanding needs a background folder and derives the flow folder from its parent;
 - acceptance criteria need reviewed documentation;
 - proposals need documentation and acceptance criteria;
 - planning needs a selected or inferable proposal;

@@ -2,11 +2,11 @@
 
 ## What this produces
 
-A concise understanding dossier in `<flow-folder>/docs/` derived from user-provided material in `<flow-folder>/background/`.
+A concise understanding dossier in `<flow-folder>/docs/` derived from user-provided material in `<background>/`, where `<flow-folder>` is the parent folder of `<background>`.
 
 ## Investigation process
 
-1. Use background material from current context when already available; otherwise read it from `background/`.
+1. Use background material from current context when already available; otherwise read it from `<background>/`.
 2. If the background contains contradictions or conceptual inconsistencies, report them and stop before investigating further.
 3. Write concise understanding notes to:
 
@@ -27,8 +27,8 @@ A concise understanding dossier in `<flow-folder>/docs/` derived from user-provi
 ## Gotcha list
 
 **Scope:**
-- Do not infer the flow folder from the repository root when the user omits it.
-- Do not continue when background material is neither in context nor available in `background/`.
+- Do not infer the background folder from the repository root when the user omits it.
+- Do not continue when background material is neither in context nor available in `<background>/`.
 - Do not read background files when their contents are already available in current context.
 - Do not read background material before the validation process passes.
 - Do not inspect implementation files before reading the background material.

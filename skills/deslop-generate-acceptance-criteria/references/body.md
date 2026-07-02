@@ -42,7 +42,7 @@ Then <observable result>
 ## Gotcha list
 
 **Input:**
-- Do not use the `background/` folder to create acceptance criteria.
+- Do not use the original `<background>/` source folder to create acceptance criteria.
 - Do not continue when documentation is neither in context nor available in `documentation.md`.
 - Do not read `documentation.md` before the validation process passes.
 - Do not read `documentation.md` when its contents are already available in current context.
