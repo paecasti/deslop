@@ -46,10 +46,10 @@ Deslop does not compete with those tools or require them to fit into a closed ec
 
 ## Workflow
 
-Each Deslop run lives in a flow folder. That folder is the unit of work, and it can be any folder the user chooses for that run.
+Each Deslop run lives in a Deslop root. That folder is the unit of work, and it can be any folder the user chooses for that run.
 
 ```txt
-<flow-folder>/
+<deslop-root>/
   <background>/
   docs/
   proposals/
@@ -57,9 +57,9 @@ Each Deslop run lives in a flow folder. That folder is the unit of work, and it 
   verification/
 ```
 
-The main flow is intentionally short:
+The main process is intentionally short:
 
-1. `$deslop-understand` reads the user's input and the material in a user-specified `<background>` folder, treats that folder's parent as `<flow-folder>`, then generates `docs/documentation.md` as draft documentation.
+1. `$deslop-understand` reads the user's input and the material in a user-specified `<background>` folder, treats that folder's parent as `<deslop-root>`, then generates `docs/documentation.md` as draft documentation.
 2. The user reviews `docs/documentation.md` and decides whether it represents the problem correctly.
 3. `$deslop-generate-acceptance-criteria` uses that documentation to generate `docs/acceptance-criteria.md`.
 4. The user reviews the acceptance criteria and decides whether they are the right contract.

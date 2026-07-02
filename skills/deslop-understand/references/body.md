@@ -2,7 +2,7 @@
 
 ## What this produces
 
-A concise understanding dossier in `<flow-folder>/docs/` derived from user-provided material in `<background>/`, where `<flow-folder>` is the parent folder of `<background>`.
+A concise understanding dossier in `<deslop-root>/docs/` derived from user-provided material in `<background>/`, where `<deslop-root>` is the parent folder of `<background>`.
 
 ## Investigation process
 
@@ -11,18 +11,18 @@ A concise understanding dossier in `<flow-folder>/docs/` derived from user-provi
 3. Write concise understanding notes to:
 
 ```txt
-<flow-folder>/docs/documentation.md
+<deslop-root>/docs/documentation.md
 ```
 
 4. When explicit information is missing and an assumption is needed, record it immediately in:
 
 ```txt
-<flow-folder>/docs/assumptions.md
+<deslop-root>/docs/assumptions.md
 ```
 
 5. Return a completion summary to the user that lists the documents created or updated.
 6. If the user wants to refine the documented understanding, suggest running `$refine` with `documentation.md`.
-7. Tell the user to review `documentation.md` first and run `$deslop-generate-acceptance-criteria` for the same flow folder only after they consider the documentation correct.
+7. Tell the user to review `documentation.md` first and run `$deslop-generate-acceptance-criteria` for the same Deslop root only after they consider the documentation correct.
 
 ## Gotcha list
 

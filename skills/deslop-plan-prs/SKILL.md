@@ -1,6 +1,6 @@
 ---
 name: deslop-plan-prs
-description: Create a PR-by-PR execution plan from a completed Deslop proposal, documentation, and acceptance criteria. Use only when explicitly invoked as $deslop-plan-prs with a flow folder; write files under flow-folder/plan.
+description: Create a PR-by-PR execution plan from a completed Deslop proposal, documentation, and acceptance criteria. Use only when explicitly invoked as $deslop-plan-prs with a Deslop root; write files under `<deslop-root>/plan`.
 ---
 
 # Deslop Plan PRs
@@ -14,31 +14,31 @@ Use the first available model in the recommended mid-tier hierarchy, and define 
 
 ## Validation process
 
-1. Require an explicit flow folder path before working:
+1. Require an explicit Deslop root path before working:
 
 ```txt
-<flow-folder>
+<deslop-root>
 ```
 
-2. Treat the flow folder as any folder the user chooses for this Deslop run.
+2. Treat the Deslop root as any folder the user chooses for this Deslop run.
 3. Require a completed proposal from current context or an explicit proposal file under:
 
 ```txt
-<flow-folder>/proposals/
+<deslop-root>/proposals/
 ```
 
 4. If no completed proposal is in context and no explicit proposal file is provided, ask the user which proposal to plan and stop.
 5. Require documentation from current context or this file:
 
 ```txt
-<flow-folder>/docs/documentation.md
+<deslop-root>/docs/documentation.md
 ```
 
 6. If documentation is not in context and `documentation.md` is missing, tell the user to run `$deslop-understand` first and stop.
 7. Require acceptance criteria from current context or this file:
 
 ```txt
-<flow-folder>/docs/acceptance-criteria.md
+<deslop-root>/docs/acceptance-criteria.md
 ```
 
 8. If acceptance criteria are not in context and `acceptance-criteria.md` is missing, tell the user to run `$deslop-generate-acceptance-criteria` first and stop.

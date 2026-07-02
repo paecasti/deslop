@@ -2,7 +2,7 @@
 
 ## What this produces
 
-A testable acceptance criteria document at `<flow-folder>/docs/acceptance-criteria.md` derived from `<flow-folder>/docs/documentation.md`.
+A testable acceptance criteria document at `<deslop-root>/docs/acceptance-criteria.md` derived from `<deslop-root>/docs/documentation.md`.
 
 ## Analysis process
 
@@ -11,7 +11,7 @@ A testable acceptance criteria document at `<flow-folder>/docs/acceptance-criter
 3. Write acceptance criteria to:
 
 ```txt
-<flow-folder>/docs/acceptance-criteria.md
+<deslop-root>/docs/acceptance-criteria.md
 ```
 
 4. Use this structure:
@@ -35,7 +35,7 @@ Then <observable result>
 
 5. Number criteria sequentially as `AC-001`, `AC-002`, `AC-003`.
 6. Keep each criterion independently testable by a human, automated test, or review checklist.
-7. Return a completion summary that names `<flow-folder>/docs/acceptance-criteria.md`.
+7. Return a completion summary that names `<deslop-root>/docs/acceptance-criteria.md`.
 8. Tell the user to review `acceptance-criteria.md`.
 9. Tell the user to run `$deslop-propose` or `$deslop-brainstorm-proposals` only after they consider `acceptance-criteria.md` correct.
 

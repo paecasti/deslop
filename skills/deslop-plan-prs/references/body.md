@@ -2,7 +2,7 @@
 
 ## What this produces
 
-A sequential PR execution plan under `<flow-folder>/plan/` with `PLAN.md`, one `context.md` per PR, and one executable `tasks.md` per PR.
+A sequential PR execution plan under `<deslop-root>/plan/` with `PLAN.md`, one `context.md` per PR, and one executable `tasks.md` per PR.
 
 ## Planning process
 
@@ -16,13 +16,13 @@ A sequential PR execution plan under `<flow-folder>/plan/` with `PLAN.md`, one `
 8. Create the plan folder:
 
 ```txt
-<flow-folder>/plan/
+<deslop-root>/plan/
 ```
 
 9. Write this minimum structure:
 
 ```txt
-<flow-folder>/plan/
+<deslop-root>/plan/
   PLAN.md
   pr-1-<slug>/
     context.md
@@ -65,7 +65,7 @@ A sequential PR execution plan under `<flow-folder>/plan/` with `PLAN.md`, one `
 - Do not use the original `<background>/` source folder to create the plan.
 
 **Output:**
-- Write real files under `<flow-folder>/plan/`; do not only answer in chat.
+- Write real files under `<deslop-root>/plan/`; do not only answer in chat.
 - Do not invent an additional parent folder under `plan/`.
 - Use Markdown, kebab-case PR folder names, and lowercase `context.md` and `tasks.md` filenames.
 - Do not create `README.md` files for PR context.
@@ -73,7 +73,7 @@ A sequential PR execution plan under `<flow-folder>/plan/` with `PLAN.md`, one `
 - Do not add empty sections.
 
 **Planning:**
-- Do not modify or create implementation files in the target codebase; write only files under `<flow-folder>/plan/`.
+- Do not modify or create implementation files in the target codebase; write only files under `<deslop-root>/plan/`.
 - Do not create broad tasks that require design decisions from the executor.
 - Preserve existing behavior unless the proposal explicitly asks for a bugfix or functional change.
 - Make each PR folder executable from only its `context.md` and `tasks.md`.

@@ -2,7 +2,7 @@
 
 ## What This Produces
 
-A concise verification report at `<flow-folder>/verification/implementation-verification.md` that states whether the implementation is `PASS`, `FAIL`, `PARTIAL`, or `INCONCLUSIVE` against the selected proposal, documentation, and acceptance criteria.
+A concise verification report at `<deslop-root>/verification/implementation-verification.md` that states whether the implementation is `PASS`, `FAIL`, `PARTIAL`, or `INCONCLUSIVE` against the selected proposal, documentation, and acceptance criteria.
 
 ## Verification Process
 
@@ -49,8 +49,8 @@ A concise verification report at `<flow-folder>/verification/implementation-veri
 
 ## Report Process
 
-1. Create `<flow-folder>/verification/` if it does not exist.
-2. Write the report to `<flow-folder>/verification/implementation-verification.md`.
+1. Create `<deslop-root>/verification/` if it does not exist.
+2. Write the report to `<deslop-root>/verification/implementation-verification.md`.
 3. Include every acceptance criterion status.
 4. Include evidence for criteria that are `failed`, `not checked`, or `not unit-testable`.
 5. Include the refactoring recommendation when static-inspection mode is used.
@@ -107,7 +107,7 @@ Unverified:
 - Verify only; do not fix implementation failures unless the user explicitly changes the task.
 - Create only verification reports and focused unit test files needed for acceptance-criteria verification.
 - Do not modify implementation source, dependencies, lockfiles, generated artifacts, or test configuration.
-- Create only `<flow-folder>/verification/` inside the flow folder; missing `docs/` or `proposals/` is a validation failure.
+- Create only `<deslop-root>/verification/` inside the Deslop root; missing `docs/` or `proposals/` is a validation failure.
 - Do not verify against a PR plan or task plan.
 - Do not verify against an unselected proposal.
 - Do not include per-criterion details or evidence in the final user message.

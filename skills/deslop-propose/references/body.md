@@ -2,7 +2,7 @@
 
 ## What this produces
 
-One decision-ready proposal at `<flow-folder>/proposals/proposal-<idea>.md` derived from the flow documentation, acceptance criteria, and any user-provided direction.
+One decision-ready proposal at `<deslop-root>/proposals/proposal-<idea>.md` derived from the Deslop documentation, acceptance criteria, and any user-provided direction.
 
 ## Analysis process
 
@@ -10,10 +10,10 @@ One decision-ready proposal at `<flow-folder>/proposals/proposal-<idea>.md` deri
 2. Use acceptance criteria from context when already available; otherwise read the file:
 
 ```txt
-<flow-folder>/docs/acceptance-criteria.md
+<deslop-root>/docs/acceptance-criteria.md
 ```
 
-3. If existing proposal ideas are not already known from context and `<flow-folder>/proposals/` contains proposals, read enough of them to identify their ideas.
+3. If existing proposal ideas are not already known from context and `<deslop-root>/proposals/` contains proposals, read enough of them to identify their ideas.
 4. Choose one proposal direction that follows the user's directive when provided.
 5. If no user directive was provided, choose the best solution direction supported by the documentation and acceptance criteria.
 6. Create one proposal, not a set of alternatives.
@@ -21,7 +21,7 @@ One decision-ready proposal at `<flow-folder>/proposals/proposal-<idea>.md` deri
 8. Write the proposal to a short filesystem-safe idea filename:
 
 ```txt
-<flow-folder>/proposals/proposal-<idea>.md
+<deslop-root>/proposals/proposal-<idea>.md
 ```
 
 9. Include this metrics block near the top:
@@ -39,7 +39,7 @@ One decision-ready proposal at `<flow-folder>/proposals/proposal-<idea>.md` deri
 
 10. Use `unknown` for a metric value only when it cannot be inferred, and explain why in the notes cell.
 11. End by telling the user the proposal file created and that it is ready to accept, reject, revise, compare with another proposal, or plan.
-12. Suggest running `$deslop-plan-prs` for the same flow folder after the proposal is accepted or chosen.
+12. Suggest running `$deslop-plan-prs` for the same Deslop root after the proposal is accepted or chosen.
 
 ## Gotcha list
 

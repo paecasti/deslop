@@ -1,6 +1,6 @@
 ---
 name: deslop-propose
-description: Create one decision-ready proposal from an explicit flow folder after deslop-understand has produced documentation. Use only when explicitly invoked as $deslop-propose with a flow folder; honor user proposal direction when provided.
+description: Create one decision-ready proposal from an explicit Deslop root after deslop-understand has produced documentation. Use only when explicitly invoked as $deslop-propose with a Deslop root; honor user proposal direction when provided.
 ---
 
 # Deslop Propose
@@ -14,26 +14,26 @@ Use the first available model in the recommended mid-tier hierarchy, and define 
 
 ## Validation process
 
-1. Require an explicit flow folder path before working:
+1. Require an explicit Deslop root path before working:
 
 ```txt
-<flow-folder>
+<deslop-root>
 ```
 
 2. Capture any extra user directive from the invocation as proposal direction.
 3. If the user gives no proposal direction, do not ask for one; choose the best solution direction during analysis.
-4. Treat the flow folder as any folder the user chooses for this Deslop run.
+4. Treat the Deslop root as any folder the user chooses for this Deslop run.
 5. Require documentation from current context or this file:
 
 ```txt
-<flow-folder>/docs/documentation.md
+<deslop-root>/docs/documentation.md
 ```
 
-6. If documentation is not in context and `documentation.md` is missing, tell the user to run `$deslop-understand` for the flow folder first and stop.
+6. If documentation is not in context and `documentation.md` is missing, tell the user to run `$deslop-understand` for the Deslop root first and stop.
 7. Require acceptance criteria from current context or this file:
 
 ```txt
-<flow-folder>/docs/acceptance-criteria.md
+<deslop-root>/docs/acceptance-criteria.md
 ```
 
 8. If acceptance criteria are not in context and `acceptance-criteria.md` is missing, tell the user to review `documentation.md`, run `$deslop-generate-acceptance-criteria`, and stop.

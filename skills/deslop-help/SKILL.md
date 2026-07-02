@@ -1,6 +1,6 @@
 ---
 name: deslop-help
-description: Explain how to use the Deslop flow in a clear fixed user-facing response. Use only when explicitly invoked as $deslop-help or when the user asks for help understanding the Deslop workflow.
+description: Explain how to use the Deslop workflow in a clear fixed user-facing response. Use only when explicitly invoked as $deslop-help or when the user asks for help understanding the Deslop workflow.
 ---
 
 # Deslop Help
@@ -8,14 +8,14 @@ description: Explain how to use the Deslop flow in a clear fixed user-facing res
 When invoked, reply with the fixed text below. Do not inspect files, create folders, run commands, or modify the workspace.
 
 ````md
-Deslop is a workflow for turning an unclear idea into an implementable and verifiable proposal, with each stage saved inside a flow folder.
+Deslop is a workflow for turning an unclear idea into an implementable and verifiable proposal, with each stage saved inside a Deslop root.
 
-A flow folder can be any folder you choose for one Deslop run.
+A Deslop root can be any folder you choose for one Deslop run.
 
 Recommended structure:
 
 ```txt
-<flow-folder>/
+<deslop-root>/
   <background>/
   docs/
   proposals/
@@ -25,7 +25,7 @@ Recommended structure:
 
 Skill summary:
 
-- `$deslop-understand`: Reads a user-specified `<background>` folder and produces `docs/documentation.md` in its parent flow folder.
+- `$deslop-understand`: Reads a user-specified `<background>` folder and produces `docs/documentation.md` in its parent Deslop root.
 - `$deslop-generate-acceptance-criteria`: Turns the documentation into concrete acceptance criteria.
 - `$deslop-brainstorm-proposals`: Generates several brief solution directions for comparison.
 - `$deslop-propose`: Creates one decision-ready proposal under `proposals/`.
@@ -36,7 +36,7 @@ Workflow diagram:
 
 ```mermaid
 flowchart TD
-    A["Choose any flow folder"]
+    A["Choose any Deslop root"]
     B["Add context<br/><background>/"]
     C["$deslop-understand"]
     D["Refine<br/>docs/documentation.md"]
@@ -57,16 +57,16 @@ flowchart TD
 
 Typical usage:
 
-1. Create or choose any flow folder, for example `improve-onboarding/` or `flows/improve-onboarding/`.
+1. Create or choose any Deslop root, for example `improve-onboarding/` or `deslop/improve-onboarding/`.
 2. Put the initial context in any background folder inside it, for example `priordata/`, `context/`, or `background/`.
-3. Run `$deslop-understand <background>` to generate `docs/documentation.md` in the parent flow folder.
+3. Run `$deslop-understand <background>` to generate `docs/documentation.md` in the parent Deslop root.
 4. Review the documentation. If decisions are missing or ambiguities remain, resolve them before moving forward.
-5. Run `$deslop-generate-acceptance-criteria <flow-folder>` to create `docs/acceptance-criteria.md`.
-6. Optionally run `$deslop-brainstorm-proposals <flow-folder>` if you want to compare several solution ideas.
-7. Run `$deslop-propose <flow-folder>` to create a concrete proposal in `proposals/`.
-8. Run `$deslop-plan-prs <flow-folder>` once you have chosen a proposal and want to split the implementation into PRs.
+5. Run `$deslop-generate-acceptance-criteria <deslop-root>` to create `docs/acceptance-criteria.md`.
+6. Optionally run `$deslop-brainstorm-proposals <deslop-root>` if you want to compare several solution ideas.
+7. Run `$deslop-propose <deslop-root>` to create a concrete proposal in `proposals/`.
+8. Run `$deslop-plan-prs <deslop-root>` once you have chosen a proposal and want to split the implementation into PRs.
 9. Implement by following the generated plan; no specific skill is required for this stage.
-10. Use `$deslop-verify-implementation <flow-folder>` to verify a completed implementation against the proposal, documentation, and acceptance criteria.
+10. Use `$deslop-verify-implementation <deslop-root>` to verify a completed implementation against the proposal, documentation, and acceptance criteria.
 
 
 ````

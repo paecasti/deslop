@@ -1,6 +1,6 @@
 ---
 name: deslop-understand
-description: Build documented understanding from an explicit background folder, deriving the flow folder from its parent. Use only when explicitly invoked as $deslop-understand with a background folder; do not propose, plan, or implement.
+description: Build documented understanding from an explicit background folder, deriving the Deslop root from its parent. Use only when explicitly invoked as $deslop-understand with a background folder; do not propose, plan, or implement.
 ---
 
 # Deslop Understand
@@ -21,7 +21,7 @@ Use the first available model in the recommended mid-tier hierarchy, and define 
 ```
 
 2. Treat `<background>` as any folder the user chooses for source material.
-3. Derive `<flow-folder>` as the parent folder of `<background>`.
+3. Derive `<deslop-root>` as the parent folder of `<background>`.
 4. Require background material from current context or this folder:
 
 ```txt

@@ -2,7 +2,7 @@
 
 ## What this produces
 
-A lightweight proposal brainstorm at `<flow-folder>/proposals/brainstorm-proposals.md` with multiple brief solution ideas grounded in documentation, acceptance criteria, and metrics.
+A lightweight proposal brainstorm at `<deslop-root>/proposals/brainstorm-proposals.md` with multiple brief solution ideas grounded in documentation, acceptance criteria, and metrics.
 
 ## Analysis process
 
@@ -10,7 +10,7 @@ A lightweight proposal brainstorm at `<flow-folder>/proposals/brainstorm-proposa
 2. Use acceptance criteria from context when already available; otherwise read the file:
 
 ```txt
-<flow-folder>/docs/acceptance-criteria.md
+<deslop-root>/docs/acceptance-criteria.md
 ```
 
 3. Read source project files only when needed to avoid irrelevant or impossible ideas.
@@ -19,7 +19,7 @@ A lightweight proposal brainstorm at `<flow-folder>/proposals/brainstorm-proposa
 6. Write the brainstorm to:
 
 ```txt
-<flow-folder>/proposals/brainstorm-proposals.md
+<deslop-root>/proposals/brainstorm-proposals.md
 ```
 
 7. Use this structure:
