@@ -24,6 +24,15 @@ Recommended structure:
   verification/
 ```
 
+Example:
+
+```txt
+checkout/
+  priordata/
+```
+
+Here, `checkout/priordata` is the background folder and `checkout` is the Deslop root.
+
 Skill summary:
 
 - `$deslop-understand`: Reads a user-specified `<background>` folder and produces `docs/documentation.md` in its parent Deslop root.
@@ -60,9 +69,9 @@ Typical usage:
 
 1. Create or choose any Deslop root, for example `improve-onboarding/` or `deslop/improve-onboarding/`.
 2. Put the initial context in any background folder inside it, for example `priordata/`, `context/`, or `background/`.
-3. Run `$deslop-understand <background>` to generate `docs/documentation.md` in the parent Deslop root.
+3. Run `$deslop-understand checkout/priordata` to generate `checkout/docs/documentation.md`.
 4. Review the documentation. If decisions are missing or ambiguities remain, resolve them before moving forward.
-5. Run `$deslop-generate-acceptance-criteria <deslop-root>` to create `docs/acceptance-criteria.md`.
+5. Run `$deslop-generate-acceptance-criteria checkout` to create `checkout/docs/acceptance-criteria.md`.
 6. Optionally run `$deslop-brainstorm-proposals <deslop-root>` if you want to compare several solution ideas.
 7. Run `$deslop-propose <deslop-root>` to create a concrete proposal in `proposals/`.
 8. Run `$deslop-plan-prs <deslop-root>` once you have chosen a proposal and want to split the implementation into PRs.
