@@ -2,6 +2,7 @@
 name: deslop-understand
 disable-model-invocation: true
 description: Build documented understanding from an explicit background folder, deriving the Deslop root from its parent. Use only when explicitly invoked as $deslop-understand with a background folder; do not propose, plan, or implement.
+argument-hint: "../<deslop-root>/<background>"
 ---
 
 # Deslop Understand

@@ -2,6 +2,7 @@
 name: deslop-verify-implementation
 disable-model-invocation: true
 description: Verify completed Deslop implementation against one proposal, documentation, and acceptance criteria from a Deslop root. Use when explicitly invoked as $deslop-verify-implementation; create unit tests when the architecture supports them, otherwise inspect code.
+argument-hint: "../<deslop-root>"
 ---
 
 # Deslop Verify Implementation

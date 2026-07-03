@@ -2,6 +2,7 @@
 name: deslop-plan-prs
 disable-model-invocation: true
 description: Create a PR-by-PR execution plan from a completed Deslop proposal, documentation, and acceptance criteria. Use only when explicitly invoked as $deslop-plan-prs with a Deslop root; write files under `<deslop-root>/plan`.
+argument-hint: "../<deslop-root>/<propose>"
 ---
 
 # Deslop Plan PRs

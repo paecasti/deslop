@@ -2,6 +2,7 @@
 name: deslop-generate-acceptance-criteria
 disable-model-invocation: true
 description: Generate acceptance criteria from a deslop-understand documentation.md file. Use only when explicitly invoked as $deslop-generate-acceptance-criteria with a Deslop root; do not implement or propose solutions.
+argument-hint: "../<deslop-root>"
 ---
 
 # Deslop Generate Acceptance Criteria

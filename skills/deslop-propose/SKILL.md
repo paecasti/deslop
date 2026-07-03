@@ -2,6 +2,7 @@
 name: deslop-propose
 disable-model-invocation: true
 description: Create one decision-ready proposal from an explicit Deslop root after deslop-understand has produced documentation. Use only when explicitly invoked as $deslop-propose with a Deslop root; honor user proposal direction when provided.
+argument-hint: "../<deslop-root> (optional)<idea>"
 ---
 
 # Deslop Propose
