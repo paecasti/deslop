@@ -65,6 +65,7 @@ Each skill has one main job:
 - `$deslop-brainstorm-proposals`: explore solution directions.
 - `$deslop-propose`: create one decision-ready proposal.
 - `$deslop-plan-prs`: turn an accepted proposal into PR-sized work.
+- `$deslop-plan-issue`: turn an accepted proposal into a single self-contained, commit-by-commit issue draft.
 - `$deslop-verify-implementation`: check completed work against the proposal, documentation, and acceptance criteria.
 
 The boundaries matter:
@@ -73,6 +74,7 @@ The boundaries matter:
 - acceptance criteria should not design implementation;
 - proposal should not plan PRs;
 - planning should not modify implementation code;
+- issue planning should not create the issue or modify implementation code;
 - verification should not fix failures unless the user asks.
 
 ## External Tools Are Expected
