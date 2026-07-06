@@ -11,7 +11,7 @@ A concise verification report at `<deslop-root>/verification/implementation-veri
    - Include committed and uncommitted implementation changes.
    - Use another worktree only when the user explicitly names it.
 2. Read the Deslop sources of truth:
-   - Exactly one selected proposal.
+   - The proposal given at invocation, from context when already available, otherwise read the file.
    - Documentation from context or `docs/documentation.md`.
    - Acceptance criteria from context or `docs/acceptance-criteria.md`.
 3. Inspect the project's existing test architecture:
@@ -71,7 +71,7 @@ Mode: unit tests | static inspection
 
 Verified:
 - Implementation: <worktree or named worktree>
-- Proposal: <proposal file or identifier>
+- Proposal: <proposal file name under `proposals/`>
 - Documentation: <documentation source>
 - Acceptance criteria: <acceptance criteria source>
 
@@ -107,9 +107,10 @@ Unverified:
 - Verify only; do not fix implementation failures unless the user explicitly changes the task.
 - Create only verification reports and focused unit test files needed for acceptance-criteria verification.
 - Do not modify implementation source, dependencies, lockfiles, generated artifacts, or test configuration.
-- Create only `<deslop-root>/verification/` inside the Deslop root; missing `docs/` or `proposals/` is a validation failure.
+- Create only `<deslop-root>/verification/` inside the Deslop root; missing `docs/` is a validation failure.
 - Do not verify against a PR plan or task plan.
-- Do not verify against an unselected proposal.
+- Do not verify against any proposal other than the one given at invocation; do not browse other files under `proposals/`.
+- Always record the verified proposal's file name in the report's `Verified:` section.
 - Do not include per-criterion details or evidence in the final user message.
 
 **Testing:**

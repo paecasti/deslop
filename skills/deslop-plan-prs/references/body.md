@@ -6,7 +6,7 @@ A sequential PR execution plan under `<deslop-root>/plan/` with `PLAN.md`, one `
 
 ## Planning process
 
-1. Use the completed proposal from context when already available; otherwise read only the selected proposal file.
+1. Use the proposal content from context when already available; otherwise read the proposal file given at invocation.
 2. Use `documentation.md` content from context when already available; otherwise read the file.
 3. Use `acceptance-criteria.md` content from context when already available; otherwise read the file.
 4. Read source project files only when needed to avoid an impossible or vague task breakdown.
@@ -34,6 +34,7 @@ A sequential PR execution plan under `<deslop-root>/plan/` with `PLAN.md`, one `
 
 10. Include in `PLAN.md`:
 - Overall objective.
+- Reference to the source proposal this plan implements (file name under `proposals/`).
 - Folder, filename, and numbering conventions.
 - Ordered PR map with objective, related acceptance criteria IDs, risk, and relative complexity.
 
@@ -61,7 +62,7 @@ A sequential PR execution plan under `<deslop-root>/plan/` with `PLAN.md`, one `
 
 **Input:**
 - Do not read proposal, documentation, or acceptance criteria files when their contents are already available in current context.
-- Do not read every proposal file when the selected proposal is already explicit.
+- Do not browse other files under `proposals/`; the invocation always names the one proposal to plan.
 - Do not use the original `<background>/` source folder to create the plan.
 
 **Output:**

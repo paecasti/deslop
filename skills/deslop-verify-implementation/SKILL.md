@@ -1,8 +1,8 @@
 ---
 name: deslop-verify-implementation
 disable-model-invocation: true
-description: Verify completed Deslop implementation against one proposal, documentation, and acceptance criteria from a Deslop root. Use when explicitly invoked as $deslop-verify-implementation; create unit tests when the architecture supports them, otherwise inspect code.
-argument-hint: "../<deslop-root>"
+description: Verify completed Deslop implementation against one proposal, documentation, and acceptance criteria from a Deslop root. Use when explicitly invoked as $deslop-verify-implementation with a proposal file path; create unit tests when the architecture supports them, otherwise inspect code.
+argument-hint: "../<deslop-root>/proposals/<idea>.md"
 ---
 
 # Deslop Verify Implementation
@@ -18,26 +18,24 @@ Use the first available model in the recommended mid-tier hierarchy, and define 
 
 Run these checks before verification:
 
-1. Require an explicit Deslop root path before working:
+1. Require an explicit proposal file path before working:
 
 ```txt
-<deslop-root>
+<deslop-root>/proposals/<idea>.md
 ```
 
-2. Treat the Deslop root as any folder the user chooses for this Deslop run.
-3. Require this existing Deslop folder structure:
+2. Treat the parent of `proposals/` as `<deslop-root>`.
+3. Require the proposal content from current context or the proposal file; do not re-read the file when its content is already in context.
+4. Require this existing Deslop folder structure:
 
 ```txt
 <deslop-root>/docs/
-<deslop-root>/proposals/
 ```
 
-4. If the required Deslop root structure is missing, tell the user which folder is missing and stop.
-5. Require access to the implementation code in the current worktree, whether its changes are committed, uncommitted, or both.
-6. Require exactly one proposal from current context, an explicit proposal file, or `<deslop-root>/proposals/`.
-7. If `<deslop-root>/proposals/` contains more than one proposal and the user did not specify which one to use, tell the user to specify the proposal and stop.
-8. Require documentation from current context or `<deslop-root>/docs/documentation.md`.
-9. Require acceptance criteria from current context or `<deslop-root>/docs/acceptance-criteria.md`.
-10. If acceptance criteria are not in context and `acceptance-criteria.md` is missing, tell the user to run `$deslop-generate-acceptance-criteria` first and stop.
-11. If the implementation worktree, proposal, documentation, or acceptance criteria are unavailable, ask for the missing source before verifying.
-12. If validation passes, read `references/body.md` and follow it.
+5. If `docs/` is missing, tell the user which folder is missing and stop.
+6. Require access to the implementation code in the current worktree, whether its changes are committed, uncommitted, or both.
+7. Require documentation from current context or `<deslop-root>/docs/documentation.md`.
+8. Require acceptance criteria from current context or `<deslop-root>/docs/acceptance-criteria.md`.
+9. If acceptance criteria are not in context and `acceptance-criteria.md` is missing, tell the user to run `$deslop-generate-acceptance-criteria` first and stop.
+10. If the implementation worktree, proposal, documentation, or acceptance criteria are unavailable, ask for the missing source before verifying.
+11. If validation passes, read `references/body.md` and follow it.

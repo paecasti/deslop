@@ -69,11 +69,5 @@ A lightweight proposal brainstorm at `<deslop-root>/proposals/brainstorm-proposa
 - Honor the user's requested count when it is a concrete number.
 - Ask one concise clarification only when the requested count is ambiguous or impossible.
 
-**Metrics:**
-- Set `effort` from implementation complexity, moving parts, side effects, and codebase familiarity.
-- Set `design_clarity` from coupling, concepts added, and ease of explanation.
-- Set `architectural_fit` from alignment with existing architecture, conventions, boundaries, naming, and code style.
-- Set `estimated_time` as a rough developer planning range in hours or days.
-
 **Next step:**
 - Point the user to `$deslop-propose` after the brainstorm is complete.

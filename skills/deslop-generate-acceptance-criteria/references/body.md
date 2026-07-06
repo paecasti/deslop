@@ -46,7 +46,6 @@ Then <observable result>
 - Do not continue when documentation is neither in context nor available in `documentation.md`.
 - Do not read `documentation.md` before the validation process passes.
 - Do not read `documentation.md` when its contents are already available in current context.
-- Do not use `assumptions.md`; it is a trace document, not acceptance criteria input.
 
 **Criteria:**
 - Do not write implementation tasks, UI copy, architecture decisions, or solution proposals as acceptance criteria.

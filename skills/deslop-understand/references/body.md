@@ -14,12 +14,7 @@ A concise understanding dossier in `<deslop-root>/docs/` derived from user-provi
 <deslop-root>/docs/documentation.md
 ```
 
-4. When explicit information is missing and an assumption is needed, record it immediately in:
-
-```txt
-<deslop-root>/docs/assumptions.md
-```
-
+4. When explicit information is missing and an assumption is needed, record it immediately in an `## Assumptions` section of `documentation.md`.
 5. Return a completion summary to the user that lists the documents created or updated.
 6. Tell the user to review `documentation.md` first and run `$deslop-generate-acceptance-criteria` for the same Deslop root only after they consider the documentation correct.
 
@@ -35,7 +30,6 @@ A concise understanding dossier in `<deslop-root>/docs/` derived from user-provi
 **Behavior:**
 - Do not propose, plan, implement, refactor, or select a solution.
 - Stop on contradictions in background material instead of reconciling them silently.
-- Update `assumptions.md` as assumptions appear during investigation, not only at the end.
 
 **Output:**
 - Keep `documentation.md` useful for a later proposal without repeating the same investigation.
