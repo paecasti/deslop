@@ -54,6 +54,7 @@ Each Deslop run lives in a Deslop root. That folder is the unit of work, and it 
   docs/
   proposals/
   plan/
+  issue/
   verification/
 ```
 
@@ -64,7 +65,7 @@ The main process is intentionally short:
 3. `$deslop-generate-acceptance-criteria` uses that documentation to generate `docs/acceptance-criteria.md`.
 4. The user reviews the acceptance criteria and decides whether they are the right contract.
 5. `$deslop-brainstorm-proposals` or `$deslop-propose` uses the documentation and acceptance criteria to explore or choose a solution direction.
-6. `$deslop-plan-prs` turns an accepted proposal into a PR-by-PR implementation plan.
+6. `$deslop-plan-prs` turns an accepted proposal into a PR-by-PR implementation plan. Alternatively, `$deslop-plan-issue` turns the same proposal into a single self-contained, commit-by-commit issue draft that a simpler implementing agent can execute on its own.
 7. `$deslop-verify-implementation` compares the completed implementation against the proposal, documentation, and acceptance criteria.
 
 The important boundary is that acceptance criteria become the downstream contract. Once they exist, planning and verification should be judged against them, not against a loose memory of the original request.

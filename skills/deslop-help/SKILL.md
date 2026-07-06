@@ -21,6 +21,7 @@ Recommended structure:
   docs/
   proposals/
   plan/
+  issue/
   verification/
 ```
 
@@ -40,6 +41,7 @@ Skill summary:
 - `$deslop-brainstorm-proposals`: Generates several brief solution directions for comparison.
 - `$deslop-propose`: Creates one decision-ready proposal under `proposals/`.
 - `$deslop-plan-prs`: Converts a proposal into a PR-by-PR execution plan.
+- `$deslop-plan-issue`: Converts a proposal into a single self-contained, commit-by-commit implementation issue draft.
 - `$deslop-verify-implementation`: Checks a completed implementation against the proposal, documentation, and acceptance criteria.
 
 Workflow diagram:
@@ -56,13 +58,16 @@ flowchart TD
     H["$deslop-brainstorm-proposals"]
     I["$deslop-propose<br/>'idea'"]
     J["$deslop-plan-prs<br/>'proposal'"]
+    M["$deslop-plan-issue<br/>'proposal'"]
     K["Implement plan"]
     L["$deslop-verify-implementation"]
 
     A --> B --> C --> D --> E --> F --> G
     G -- "Yes" --> H --> I
     G -- "No" --> I
-    I --> J --> K --> L
+    I --> J --> K
+    I --> M --> K
+    K --> L
 ```
 
 Typical usage:
@@ -74,7 +79,7 @@ Typical usage:
 5. Run `$deslop-generate-acceptance-criteria checkout` to create `checkout/docs/acceptance-criteria.md`.
 6. Optionally run `$deslop-brainstorm-proposals <deslop-root>` if you want to compare several solution ideas.
 7. Run `$deslop-propose <deslop-root>` to create a concrete proposal in `proposals/`.
-8. Run `$deslop-plan-prs <deslop-root>` once you have chosen a proposal and want to split the implementation into PRs.
+8. Run `$deslop-plan-prs <deslop-root>` once you have chosen a proposal and want to split the implementation into PRs. Alternatively, run `$deslop-plan-issue <deslop-root> <target-branch>` to produce a single self-contained commit-by-commit issue draft that a simpler implementing agent can execute on the branch you specify.
 9. Implement by following the generated plan; no specific skill is required for this stage.
 10. Use `$deslop-verify-implementation <deslop-root>` to verify a completed implementation against the proposal, documentation, and acceptance criteria.
 
