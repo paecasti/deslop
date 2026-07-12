@@ -79,9 +79,9 @@ Typical usage:
 5. Run `$deslop-generate-acceptance-criteria checkout` to create `checkout/docs/acceptance-criteria.md`.
 6. Optionally run `$deslop-brainstorm-proposals <deslop-root>` if you want to compare several solution ideas.
 7. Run `$deslop-propose <deslop-root>` to create a concrete proposal in `proposals/`.
-8. Run `$deslop-plan-prs <deslop-root>` once you have chosen a proposal and want to split the implementation into PRs. Alternatively, run `$deslop-plan-issue <deslop-root> <target-branch>` to produce a single self-contained commit-by-commit issue draft that a simpler implementing agent can execute on the branch you specify.
+8. Run `$deslop-plan-prs <deslop-root>/proposals/<idea>.md` once you have chosen a proposal and want to split the implementation into PRs. Alternatively, run `$deslop-plan-issue <deslop-root>/proposals/<idea>.md <target-branch>` to produce a single self-contained commit-by-commit issue draft that a simpler implementing agent can execute on the branch you specify.
 9. Implement by following the generated plan; no specific skill is required for this stage.
-10. Use `$deslop-verify-implementation <deslop-root>` to verify a completed implementation against the proposal, documentation, and acceptance criteria.
+10. Use `$deslop-verify-implementation <deslop-root>/proposals/<idea>.md` to verify a completed implementation against the proposal, documentation, and acceptance criteria.
 
 
 ````
