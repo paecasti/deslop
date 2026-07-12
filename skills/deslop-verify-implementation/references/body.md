@@ -1,10 +1,10 @@
 # Deslop Verify Implementation Body
 
-## What This Produces
+## What this produces
 
 A concise verification report at `<deslop-root>/verification/implementation-verification.md` that states whether the implementation is `PASS`, `FAIL`, `PARTIAL`, or `INCONCLUSIVE` against the selected proposal, documentation, and acceptance criteria.
 
-## Verification Process
+## Verification process
 
 1. Establish the implementation worktree to verify:
    - Use the current worktree by default.
@@ -21,7 +21,7 @@ A concise verification report at `<deslop-root>/verification/implementation-veri
 4. Use unit-test mode when the project already supports unit tests and at least one acceptance criterion can be tested without changing source architecture, dependencies, lockfiles, or test configuration.
 5. Use static-inspection mode when the project lacks a usable unit test setup or the relevant behavior is not reachable through unit-testable boundaries.
 
-## Unit-Test Mode
+## Unit-test mode
 
 1. Map every acceptance criterion to `unit-testable` or `not unit-testable`.
 2. For each `not unit-testable` criterion, record the reason in the report; do not attempt to verify it through static inspection or any other means.
@@ -34,7 +34,7 @@ A concise verification report at `<deslop-root>/verification/implementation-veri
 9. Classify criteria that cannot be represented as unit tests as `not unit-testable`.
 10. If the unit test command cannot run because of environment or dependency failure unrelated to the implementation, classify affected criteria as `not checked` and include the command output.
 
-## Static-Inspection Mode
+## Static-inspection mode
 
 1. State that the architecture does not currently support useful acceptance-criteria unit tests.
 2. Recommend refactoring the application to expose testable units before future verification.
@@ -47,7 +47,7 @@ A concise verification report at `<deslop-root>/verification/implementation-veri
 9. For `failed` and `not checked`, include file and line references when available.
 10. Do not mark a criterion `covered` from filenames, comments, TODOs, intended architecture, or declarations without reachable implementation code paths.
 
-## Report Process
+## Report process
 
 1. Create `<deslop-root>/verification/` if it does not exist.
 2. Write the report to `<deslop-root>/verification/implementation-verification.md`.
@@ -56,14 +56,14 @@ A concise verification report at `<deslop-root>/verification/implementation-veri
 5. Include the refactoring recommendation when static-inspection mode is used.
 6. In the final user message, use this format: `Result: <status>. Report: <path>. Mode: <unit tests | static inspection>. Tests: <passed | failed | not run>. Coverage: <covered> covered, <failed> failed, <not checked> not checked, <not unit-testable> not unit-testable.`
 
-## Result Classification
+## Result classification
 
 - `PASS`: Unit-test mode has all criteria covered by passing tests, with no `failed`, `not checked`, or `not unit-testable` criteria, or static-inspection mode covers every criterion without contradiction.
 - `FAIL`: Any unit test fails because the implementation does not satisfy an acceptance criterion, or static inspection shows implementation code contradicts the proposal, documentation, or acceptance criteria.
 - `PARTIAL`: At least one criterion is `not checked` or `not unit-testable`, with no failed criterion.
 - `INCONCLUSIVE`: Required sources, implementation code files, or verification prerequisites were unavailable.
 
-## Report Format
+## Report format
 
 ```md
 Result: PASS | FAIL | PARTIAL | INCONCLUSIVE
@@ -101,7 +101,7 @@ Unverified:
 - <unverified area or "None">
 ```
 
-## Gotcha List
+## Gotcha list
 
 **Scope:**
 - Verify only; do not fix implementation failures unless the user explicitly changes the task.

@@ -72,7 +72,7 @@ flowchart TD
 
 Typical usage:
 
-1. Create or choose any Deslop root, for example `improve-onboarding/` or `deslop/improve-onboarding/`.
+1. Create or choose any Deslop root, for example `checkout/`.
 2. Put the initial context in any background folder inside it, for example `priordata/`, `context/`, or `background/`.
 3. Run `$deslop-understand checkout/priordata` to generate `checkout/docs/documentation.md`.
 4. Review the documentation. If decisions are missing or ambiguities remain, resolve them before moving forward.
@@ -82,6 +82,4 @@ Typical usage:
 8. Run `$deslop-plan-prs <deslop-root>/proposals/<idea>.md` once you have chosen a proposal and want to split the implementation into PRs. Alternatively, run `$deslop-plan-issue <deslop-root>/proposals/<idea>.md <target-branch>` to produce a single self-contained commit-by-commit issue draft that a simpler implementing agent can execute on the branch you specify.
 9. Implement by following the generated plan; no specific skill is required for this stage.
 10. Use `$deslop-verify-implementation <deslop-root>/proposals/<idea>.md` to verify a completed implementation against the proposal, documentation, and acceptance criteria.
-
-
 ````
