@@ -7,6 +7,7 @@ The design goal is simple: keep each skill predictable, readable, and easy to mo
 ## Style Principles
 
 - **Validation first**: check required inputs before doing real work.
+- **Cold execution**: every skill must run in a fresh session; files carry the state between skills.
 - **Sequential steps**: use ordered instructions instead of vague guidance.
 - **Small surface**: keep each skill short enough to inspect and edit.
 - **Clear stops**: stop on missing prerequisites instead of guessing.
@@ -29,6 +30,20 @@ Examples:
 - verification needs implementation code, one proposal, documentation, and acceptance criteria.
 
 Prefer a clear stop over a clever guess.
+
+## Cold Execution
+
+Every skill must be able to run in a fresh session. The files inside the Deslop root are the only state carried between skills; conversation context is just an optimization for warm sessions. This is why each skill is self-contained, and why `$deslop-plan-issue` embeds everything the implementing agent needs instead of referencing Deslop files.
+
+Content already in context may be reused, but only when it is fresh:
+
+- Whenever a skill writes or reads a standard artifact (`documentation.md`, `acceptance-criteria.md`, proposal files), it records the file's modification time.
+- A later skill reuses content from context only when the recorded modification time matches the file's current one; otherwise it reads the file and records the new time.
+- When no modification time is recorded, it reads the file.
+
+The freshness check exists because the workflow expects the user to review — and possibly edit — each artifact between skills. The reviewed file on disk is the contract; a stale copy in context is not. The worst case of the check is one extra read, never working against an outdated version.
+
+Background material is exempt: `<background>/` is free-form user input and may even exist only in the conversation.
 
 ## Sequential Process
 
