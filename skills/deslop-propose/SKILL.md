@@ -38,5 +38,5 @@ Use the first available model in the recommended mid-tier hierarchy, and define 
 <deslop-root>/docs/acceptance-criteria.md
 ```
 
-8. If acceptance criteria are not in context and `acceptance-criteria.md` is missing, tell the user to review `documentation.md`, run `$deslop-generate-acceptance-criteria`, and stop.
+8. If acceptance criteria are not in context and `acceptance-criteria.md` is missing, tell the user to run `$deslop-generate-acceptance-criteria` first and stop.
 9. If validation passes, read `references/body.md` and follow it.

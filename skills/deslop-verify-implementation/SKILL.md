@@ -14,9 +14,7 @@ argument-hint: "../<deslop-root>/proposals/<idea>.md"
 
 Use the first available model in the recommended mid-tier hierarchy, and define separate hierarchies for other tiers when available.
 
-## Validation Process
-
-Run these checks before verification:
+## Validation process
 
 1. Require an explicit proposal file path before working:
 
@@ -26,16 +24,10 @@ Run these checks before verification:
 
 2. Treat the parent of `proposals/` as `<deslop-root>`.
 3. Require the proposal content from current context or the proposal file.
-4. Require this existing Deslop folder structure:
-
-```txt
-<deslop-root>/docs/
-```
-
-5. If `docs/` is missing, tell the user which folder is missing and stop.
-6. Require access to the implementation code in the current worktree, whether its changes are committed, uncommitted, or both.
-7. Require documentation from current context or `<deslop-root>/docs/documentation.md`.
-8. Require acceptance criteria from current context or `<deslop-root>/docs/acceptance-criteria.md`.
-9. If acceptance criteria are not in context and `acceptance-criteria.md` is missing, tell the user to run `$deslop-generate-acceptance-criteria` first and stop.
-10. If the implementation worktree, proposal, documentation, or acceptance criteria are unavailable, ask for the missing source before verifying.
-11. If validation passes, read `references/body.md` and follow it.
+4. Require access to the implementation code in the current worktree, whether its changes are committed, uncommitted, or both.
+5. Require documentation from current context or `<deslop-root>/docs/documentation.md`.
+6. If documentation is not in context and `documentation.md` is missing, tell the user to run `$deslop-understand` first and stop.
+7. Require acceptance criteria from current context or `<deslop-root>/docs/acceptance-criteria.md`.
+8. If acceptance criteria are not in context and `acceptance-criteria.md` is missing, tell the user to run `$deslop-generate-acceptance-criteria` first and stop.
+9. If the implementation worktree or proposal is unavailable, ask for the missing source before verifying.
+10. If validation passes, read `references/body.md` and follow it.
