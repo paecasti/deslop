@@ -43,7 +43,7 @@ Content already in context may be reused, but only when it is fresh:
 
 The freshness check exists because the workflow expects the user to review — and possibly edit — each artifact between skills. The reviewed file on disk is the contract; a stale copy in context is not. The worst case of the check is one extra read, never working against an outdated version.
 
-Background material is exempt: `<background>/` is free-form user input and may even exist only in the conversation.
+Background material is exempt: `<background>/` is free-form user input, complemented by any background material pasted in the conversation.
 
 ## Sequential Process
 

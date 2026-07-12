@@ -24,11 +24,11 @@ Use the first available model in the recommended mid-tier hierarchy, and define 
 
 2. Treat `<background>` as any folder the user chooses for source material.
 3. Derive `<deslop-root>` as the parent folder of `<background>`.
-4. Require background material from current context or this folder:
+4. Require this existing background folder:
 
 ```txt
 <background>/
 ```
 
-5. If background material is not in context and `<background>/` is missing, tell the user and stop.
+5. If `<background>/` is missing, or it is empty and no background material is in context, tell the user and stop.
 6. If validation passes, read `references/body.md` and follow it.
