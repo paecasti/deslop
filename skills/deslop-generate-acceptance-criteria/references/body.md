@@ -14,7 +14,7 @@ A testable acceptance criteria document at `<deslop-root>/docs/acceptance-criter
 <deslop-root>/docs/acceptance-criteria.md
 ```
 
-4. Use this structure:
+4. Use this structure, omitting `Edge Cases` and `Out of Scope` when `documentation.md` gives them no content:
 
 ```md
 # Acceptance Criteria
@@ -50,6 +50,3 @@ Then <observable result>
 - Do not invent behavior that is not supported by `documentation.md`.
 - Do not combine unrelated behaviors in one criterion.
 - Do not use vague pass conditions such as "works correctly", "is user friendly", or "handles errors well".
-
-**Output:**
-- Include `Out of Scope` when `documentation.md` states exclusions or non-goals.
