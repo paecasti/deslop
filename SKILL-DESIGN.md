@@ -45,6 +45,10 @@ The freshness check exists because the workflow expects the user to review — a
 
 Background material is exempt: `<background>/` is free-form user input, complemented by any background material pasted in the conversation.
 
+## Model Hierarchies
+
+Each skill recommends a mid-tier model hierarchy; the agent uses the first available model in it. Hierarchies for other tiers can be defined per skill when available. `$deslop-brainstorm-proposals` intentionally inverts the shared order to favor a more divergent model for idea generation.
+
 ## Sequential Process
 
 Each skill uses ordered steps so the workflow is easy to follow and easy to change.

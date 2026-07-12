@@ -12,7 +12,7 @@ argument-hint: "../<deslop-root> [idea]"
 1. `codex-5.4`
 2. `sonnet-4.6`
 
-Use the first available model in the recommended mid-tier hierarchy, and define separate hierarchies for other tiers when available.
+Use the first available model in the recommended mid-tier hierarchy.
 
 ## Validation process
 
