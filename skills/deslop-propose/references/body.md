@@ -14,17 +14,18 @@ One decision-ready proposal at `<deslop-root>/proposals/proposal-<idea>.md` deri
 ```
 
 3. If `<deslop-root>/proposals/` contains proposals, apply the same freshness check to them: reuse their ideas from context only when the recorded modification times match; otherwise read enough of them to identify their ideas and record their modification times.
-4. Choose one proposal direction that follows the user's directive when provided.
-5. If no user directive was provided, choose the best solution direction supported by the documentation and acceptance criteria.
-6. Create one proposal, not a set of alternatives.
-7. If prior proposals exist, make the new proposal idea distinct from each existing proposal.
-8. Write the proposal to a short filesystem-safe idea filename:
+4. Read source project files only when the documented understanding is insufficient to avoid a flawed proposal.
+5. Choose one proposal direction that follows the user's directive when provided.
+6. If no user directive was provided, choose the best solution direction supported by the documentation and acceptance criteria.
+7. Create one proposal, not a set of alternatives.
+8. If prior proposals exist, make the new proposal idea distinct from each existing proposal.
+9. Write the proposal to a short filesystem-safe idea filename:
 
 ```txt
 <deslop-root>/proposals/proposal-<idea>.md
 ```
 
-9. Include this metrics block near the top:
+10. Include this metrics block near the top:
 
 ```md
 ## Metrics
@@ -37,26 +38,17 @@ One decision-ready proposal at `<deslop-root>/proposals/proposal-<idea>.md` deri
 | estimated_time | e.g. 2-4 h   | Rough range based on what is already known |
 ```
 
-10. Use `unknown` for a metric value only when it cannot be inferred, and explain why in the notes cell.
-11. Record the modification time of the written proposal file so later Deslop skills in the same session can detect user edits.
-12. End by telling the user the proposal file created and that it is ready to accept, reject, revise, compare with another proposal, or plan.
-13. Suggest running `$deslop-plan-prs` for the same Deslop root after the proposal is accepted or chosen.
+11. Use `unknown` for a metric value only when it cannot be inferred, and explain why in the notes cell.
+12. Record the modification time of the written proposal file so later Deslop skills in the same session can detect user edits.
+13. End by telling the user the proposal file created and that it is ready to accept, reject, revise, compare with another proposal, or plan.
+14. Suggest running `$deslop-plan-prs` for the same Deslop root after the proposal is accepted or chosen.
 
 ## Gotcha list
 
 **Input:**
 - Do not use the original `<background>/` source folder to create the proposal.
-- Do not continue when acceptance criteria are neither in context nor available in `acceptance-criteria.md`.
-- Use `acceptance-criteria.md` as required decision input.
 - Treat user-provided proposal direction as binding unless it conflicts with documented requirements.
 
 **Proposal:**
-- Create one clear direction, not multiple alternatives.
-- Do not ignore the user's requested solution direction when it is compatible with the documentation.
-- Do not ask for a proposal direction when the user simply invokes the skill.
 - Do not reject the task because proposals already exist; create a distinct proposal idea.
 - Do not create an execution plan, task breakdown, or implementation.
-- Read source files only when the documented understanding is insufficient to avoid a flawed proposal.
-
-**Next step:**
-- Point the user to `$deslop-plan-prs` after a proposal is accepted or chosen.

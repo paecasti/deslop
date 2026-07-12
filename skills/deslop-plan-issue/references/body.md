@@ -45,20 +45,15 @@ A single self-contained draft issue at `<deslop-root>/issue/ISSUE.md` that divid
 
 **Input:**
 - Do not use the original `<background>/` source folder to create the issue.
-
+- Do not browse other files under `proposals/`; the invocation always names the one proposal to plan.
 
 **Planning:**
 - Do not run `gh`, `git`, or any command that creates the issue or commits; the output is a draft only.
 - Do not modify or create implementation files in the target codebase; write only the file under `<deslop-root>/issue/`.
 - Preserve existing behavior unless the proposal explicitly asks for a bugfix or functional change.
-- Record non-blocking assumptions in the issue's **Assumptions** section so the user can review them.
 - Ask before writing the file when an ambiguity blocks commit decomposition.
 
 **Commits:**
-- Bias toward the fewest coherent commits; do not over-split into one commit per file or per trivial step.
-- Do not over-specify steps; keep them concise and leave routine mechanical details to the executor's judgment.
-- Do not create broad commits that require design decisions from the executor.
-- Split a commit only when it mixes unrelated responsibilities or forces a design decision on the executor.
 - Keep each commit section operational: message, goal, files, steps, check, and commit-specific boundaries.
 - Use short illustrative snippets only when they remove implementation ambiguity.
 - Do not add `Done when`, `Done criterion`, or milestone sections to individual commits; each commit's `Check` and the final review guidance are enough.

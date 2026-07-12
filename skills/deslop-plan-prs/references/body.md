@@ -74,7 +74,6 @@ A sequential PR execution plan under `<deslop-root>/plan/` with `PLAN.md`, one `
 
 **Planning:**
 - Do not modify or create implementation files in the target codebase; write only files under `<deslop-root>/plan/`.
-- Do not create broad tasks that require design decisions from the executor.
 - Preserve existing behavior unless the proposal explicitly asks for a bugfix or functional change.
 - Make each PR folder executable from only its `context.md` and `tasks.md`.
 - Document non-blocking assumptions briefly in the relevant plan file.

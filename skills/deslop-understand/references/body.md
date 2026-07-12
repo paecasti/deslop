@@ -22,10 +22,6 @@ A concise understanding dossier in `<deslop-root>/docs/` derived from user-provi
 ## Gotcha list
 
 **Scope:**
-- Do not infer the background folder from the repository root when the user omits it.
-- Do not continue when background material is neither in context nor available in `<background>/`.
-- Do not read background files when their contents are already available in current context.
-- Do not read background material before the validation process passes.
 - Do not inspect implementation files before reading the background material.
 
 **Behavior:**
@@ -34,5 +30,3 @@ A concise understanding dossier in `<deslop-root>/docs/` derived from user-provi
 
 **Output:**
 - Keep `documentation.md` useful for a later proposal without repeating the same investigation.
-- Always return a short summary of created or updated files before ending.
-- Point the user to review `documentation.md` before running `$deslop-generate-acceptance-criteria`.

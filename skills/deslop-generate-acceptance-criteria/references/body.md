@@ -44,8 +44,6 @@ Then <observable result>
 
 **Input:**
 - Do not use the original `<background>/` source folder to create acceptance criteria.
-- Do not continue when documentation is neither in context nor available in `documentation.md`.
-- Do not read `documentation.md` before the validation process passes.
 
 **Criteria:**
 - Do not write implementation tasks, UI copy, architecture decisions, or solution proposals as acceptance criteria.
@@ -55,4 +53,3 @@ Then <observable result>
 
 **Output:**
 - Include `Out of Scope` when `documentation.md` states exclusions or non-goals.
-- Point the user to review `acceptance-criteria.md` before running `$deslop-propose` or `$deslop-brainstorm-proposals`.

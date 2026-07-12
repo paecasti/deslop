@@ -107,7 +107,7 @@ Unverified:
 - Verify only; do not fix implementation failures unless the user explicitly changes the task.
 - Create only verification reports and focused unit test files needed for acceptance-criteria verification.
 - Do not modify implementation source, dependencies, lockfiles, generated artifacts, or test configuration.
-- Create only `<deslop-root>/verification/` inside the Deslop root; missing `docs/` is a validation failure.
+- Create only `<deslop-root>/verification/` inside the Deslop root.
 - Do not verify against a PR plan or task plan.
 - Do not verify against any proposal other than the one given at invocation; do not browse other files under `proposals/`.
 - Always record the verified proposal's file name in the report's `Verified:` section.
