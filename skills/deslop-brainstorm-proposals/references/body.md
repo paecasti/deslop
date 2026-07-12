@@ -6,8 +6,8 @@ A lightweight proposal brainstorm at `<deslop-root>/proposals/brainstorm-proposa
 
 ## Analysis process
 
-1. Use `documentation.md` content from context when already available; otherwise read the file.
-2. Use acceptance criteria from context when already available; otherwise read the file:
+1. Use `documentation.md` content from context only when its recorded modification time matches the file's current modification time; otherwise read the file and record its modification time.
+2. Apply the same freshness check to the acceptance criteria; read and record the file when context is not fresh:
 
 ```txt
 <deslop-root>/docs/acceptance-criteria.md
@@ -44,8 +44,9 @@ A lightweight proposal brainstorm at `<deslop-root>/proposals/brainstorm-proposa
 ```
 
 8. Set `effort`, `design_clarity`, `architectural_fit`, and `estimated_time` for each idea.
-9. End by telling the user the brainstorm file created and that any idea can be turned into a full proposal with `$deslop-propose`.
-10. Suggest running `$deslop-propose` with the chosen brainstorm idea as the proposal direction.
+9. Record the modification time of the written `brainstorm-proposals.md` so later Deslop skills in the same session can detect user edits.
+10. End by telling the user the brainstorm file created and that any idea can be turned into a full proposal with `$deslop-propose`.
+11. Suggest running `$deslop-propose` with the chosen brainstorm idea as the proposal direction.
 
 ## Gotcha list
 
@@ -54,7 +55,6 @@ A lightweight proposal brainstorm at `<deslop-root>/proposals/brainstorm-proposa
 - Do not continue when documentation is neither in context nor available in `documentation.md`.
 - Do not continue when acceptance criteria are neither in context nor available in `acceptance-criteria.md`.
 - Do not read `documentation.md` before the validation process passes.
-- Do not read `documentation.md` or `acceptance-criteria.md` when their contents are already available in current context.
 - Use `acceptance-criteria.md` as required decision input.
 
 **Brainstorm:**

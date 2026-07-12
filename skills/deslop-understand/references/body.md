@@ -15,8 +15,9 @@ A concise understanding dossier in `<deslop-root>/docs/` derived from user-provi
 ```
 
 4. When explicit information is missing and an assumption is needed, record it immediately in an `## Assumptions` section of `documentation.md`.
-5. Return a completion summary to the user that lists the documents created or updated.
-6. Tell the user to review `documentation.md` first and run `$deslop-generate-acceptance-criteria` for the same Deslop root only after they consider the documentation correct.
+5. Record the modification time of the final `documentation.md` so later Deslop skills in the same session can detect user edits.
+6. Return a completion summary to the user that lists the documents created or updated.
+7. Tell the user to review `documentation.md` first and run `$deslop-generate-acceptance-criteria` for the same Deslop root only after they consider the documentation correct.
 
 ## Gotcha list
 

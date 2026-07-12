@@ -10,10 +10,10 @@ A concise verification report at `<deslop-root>/verification/implementation-veri
    - Use the current worktree by default.
    - Include committed and uncommitted implementation changes.
    - Use another worktree only when the user explicitly names it.
-2. Read the Deslop sources of truth:
-   - The proposal given at invocation, from context when already available, otherwise read the file.
-   - Documentation from context or `docs/documentation.md`.
-   - Acceptance criteria from context or `docs/acceptance-criteria.md`.
+2. Read the Deslop sources of truth, using content from context only when its recorded modification time matches the file's current modification time, and otherwise reading the file and recording its modification time:
+   - The proposal given at invocation.
+   - Documentation from `docs/documentation.md`.
+   - Acceptance criteria from `docs/acceptance-criteria.md`.
 3. Inspect the project's existing test architecture:
    - Existing unit test framework, scripts, dependencies, and naming conventions.
    - Existing unit test locations, fixtures, mocks, and helper patterns.

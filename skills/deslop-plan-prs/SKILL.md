@@ -23,7 +23,7 @@ Use the first available model in the recommended mid-tier hierarchy, and define 
 ```
 
 2. Treat the parent of `proposals/` as `<deslop-root>`.
-3. Require the proposal content from current context or the proposal file; do not re-read the file when its content is already in context.
+3. Require the proposal content from current context or the proposal file.
 4. Require documentation from current context or this file:
 
 ```txt

@@ -6,9 +6,9 @@ A sequential PR execution plan under `<deslop-root>/plan/` with `PLAN.md`, one `
 
 ## Planning process
 
-1. Use the proposal content from context when already available; otherwise read the proposal file given at invocation.
-2. Use `documentation.md` content from context when already available; otherwise read the file.
-3. Use `acceptance-criteria.md` content from context when already available; otherwise read the file.
+1. Use the proposal content from context only when its recorded modification time matches the proposal file's current modification time; otherwise read the proposal file given at invocation and record its modification time.
+2. Apply the same freshness check to `documentation.md`; read and record the file when context is not fresh.
+3. Apply the same freshness check to `acceptance-criteria.md`; read and record the file when context is not fresh.
 4. Read source project files only when needed to avoid an impossible or vague task breakdown.
 5. Detect objectives, constraints, risks, dependencies, affected surfaces, and validation commands.
 6. Split the work into small sequential PRs with low coupling.
@@ -61,7 +61,6 @@ A sequential PR execution plan under `<deslop-root>/plan/` with `PLAN.md`, one `
 ## Gotcha list
 
 **Input:**
-- Do not read proposal, documentation, or acceptance criteria files when their contents are already available in current context.
 - Do not browse other files under `proposals/`; the invocation always names the one proposal to plan.
 - Do not use the original `<background>/` source folder to create the plan.
 
