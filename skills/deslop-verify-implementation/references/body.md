@@ -24,7 +24,7 @@ A concise verification report at `<deslop-root>/verification/implementation-veri
 ## Unit-Test Mode
 
 1. Map every acceptance criterion to `unit-testable` or `not unit-testable`.
-2. For each `not unit-testable` criterion, record the reason in the report.
+2. For each `not unit-testable` criterion, record the reason in the report; do not attempt to verify it through static inspection or any other means.
 3. Create focused unit tests for each `unit-testable` criterion using existing test framework, style, file naming, fixtures, and mocks.
 4. Test observable behavior required by the acceptance criteria; do not test implementation details unless the criterion requires them.
 5. Run the narrowest existing unit test command that covers the created tests.
@@ -58,7 +58,7 @@ A concise verification report at `<deslop-root>/verification/implementation-veri
 
 ## Result Classification
 
-- `PASS`: Unit-test mode has all unit-testable criteria passing and no failed or not checked criteria, or static-inspection mode covers every criterion without contradiction.
+- `PASS`: Unit-test mode has all criteria covered by passing tests, with no `failed`, `not checked`, or `not unit-testable` criteria, or static-inspection mode covers every criterion without contradiction.
 - `FAIL`: Any unit test fails because the implementation does not satisfy an acceptance criterion, or static inspection shows implementation code contradicts the proposal, documentation, or acceptance criteria.
 - `PARTIAL`: At least one criterion is `not checked` or `not unit-testable`, with no failed criterion.
 - `INCONCLUSIVE`: Required sources, implementation code files, or verification prerequisites were unavailable.
