@@ -21,14 +21,28 @@ A concise verification report at `<deslop-root>/verification/implementation-veri
 4. Use unit-test mode when the project already supports unit tests and at least one acceptance criterion can be tested without changing source architecture, dependencies, lockfiles, or test configuration.
 5. Use static-inspection mode when the project lacks a usable unit test setup or the relevant behavior is not reachable through unit-testable boundaries.
 
+## Unit-test ownership and placement
+
+1. Organize unit tests by subject under test, not by proposal, acceptance criterion, or verification run.
+2. For each unit-testable criterion, identify the public class, function, service, module, or component that owns the behavior.
+3. Follow the project's existing placement convention:
+   - When tests are colocated, use the canonical test file beside the production subject.
+   - When tests use a separate tree, mirror the subject's path relative to its production root under the corresponding unit-test root.
+   - When tests use separate projects, packages, or assemblies, select the unit-test target corresponding to the production target and mirror the relative production path inside it.
+4. Use the project's canonical test filename, class, namespace, package, and suite naming conventions for that subject.
+5. Before writing, inspect the canonical test file and relevant existing tests. Reuse an existing test as evidence when it already proves the criterion.
+6. Add missing cases to the canonical test file. Create that file only when it does not exist and the existing test tooling will discover it without configuration changes.
+7. When behavior crosses multiple collaborators, place the test at the highest public boundary responsible for that behavior; do not duplicate it in every collaborator's test file.
+8. If multiple equally plausible unit-test targets or subjects remain, ask the user before writing test files.
+
 ## Unit-test mode
 
 1. Map every acceptance criterion to `unit-testable` or `not unit-testable`.
 2. For each `not unit-testable` criterion, record the reason in the report; do not attempt to verify it through static inspection or any other means.
-3. Create focused unit tests for each `unit-testable` criterion using existing test framework, style, file naming, fixtures, and mocks.
+3. For each `unit-testable` criterion, apply the ownership and placement rules, reusing existing coverage before adding a focused test case.
 4. Test observable behavior required by the acceptance criteria; do not test implementation details unless the criterion requires them.
-5. Run the narrowest existing unit test command that covers the created tests.
-6. Record the exact test command, generated test files, pass/fail result, and a concise relevant failure excerpt when tests fail.
+5. Run the narrowest existing unit test command that covers the selected tests.
+6. Record the exact test command, test files used or changed, pass/fail result, and a concise relevant failure excerpt when tests fail.
 7. Classify criteria with passing tests as `covered`.
 8. Classify criteria with failing tests as `failed`.
 9. Classify criteria that cannot be represented as unit tests as `not unit-testable`.
@@ -72,7 +86,7 @@ A concise verification report at `<deslop-root>/verification/implementation-veri
 Result: PASS | FAIL | PARTIAL | INCONCLUSIVE
 Mode: unit tests | static inspection
 Scope: <worktree or named worktree> | <proposal file name under `proposals/`>
-Tests: <passed | failed | not run> [; `<exact command>`] [; <generated test files>]
+Tests: <passed | failed | not run> [; `<exact command>`] [; <test files used or changed>]
 Reason: <include only when mode selection or inability to run tests needs explanation>
 
 | Criterion | Status | Evidence |
@@ -89,7 +103,7 @@ Reason: <include only when mode selection or inability to run tests needs explan
 
 **Scope:**
 - Verify only; do not fix implementation failures unless the user explicitly changes the task.
-- Create only verification reports and focused unit test files needed for acceptance-criteria verification.
+- Create or modify only verification reports and canonical unit-test files needed for acceptance-criteria verification.
 - Do not modify implementation source, dependencies, lockfiles, generated artifacts, or test configuration.
 - Create only `<deslop-root>/verification/` inside the Deslop root.
 - Do not verify against a PR plan or task plan.
@@ -100,6 +114,8 @@ Reason: <include only when mode selection or inability to run tests needs explan
 
 **Testing:**
 - Use existing unit test tooling only.
+- Do not create test files named after a proposal, acceptance criterion, or verification run.
+- Do not duplicate behavior across test files when an existing canonical test already proves it.
 - Do not install packages or add test frameworks.
 - Do not use browser checks, manual UI checks, live app runtime checks, network calls, databases, or external services as unit-test evidence.
 - Do not create brittle tests that assert private implementation details when behavior can be tested.
