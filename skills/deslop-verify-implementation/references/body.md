@@ -28,7 +28,7 @@ A concise verification report at `<deslop-root>/verification/implementation-veri
 3. Create focused unit tests for each `unit-testable` criterion using existing test framework, style, file naming, fixtures, and mocks.
 4. Test observable behavior required by the acceptance criteria; do not test implementation details unless the criterion requires them.
 5. Run the narrowest existing unit test command that covers the created tests.
-6. Record the exact test command, generated test files, pass/fail result, and relevant failure output.
+6. Record the exact test command, generated test files, pass/fail result, and a concise relevant failure excerpt when tests fail.
 7. Classify criteria with passing tests as `covered`.
 8. Classify criteria with failing tests as `failed`.
 9. Classify criteria that cannot be represented as unit tests as `not unit-testable`.
@@ -37,7 +37,7 @@ A concise verification report at `<deslop-root>/verification/implementation-veri
 ## Static-inspection mode
 
 1. State that the architecture does not currently support useful acceptance-criteria unit tests.
-2. Recommend refactoring the application to expose testable units before future verification.
+2. When inspection reveals a concrete testability seam, record a concise refactoring recommendation; do not add a generic recommendation.
 3. Inspect only implementation code files needed to judge conformance.
 4. Compare implemented behavior and changed surfaces against the selected proposal.
 5. Compare implemented behavior against documentation definitions, constraints, non-goals, and user-visible expectations.
@@ -51,10 +51,11 @@ A concise verification report at `<deslop-root>/verification/implementation-veri
 
 1. Create `<deslop-root>/verification/` if it does not exist.
 2. Write the report to `<deslop-root>/verification/implementation-verification.md`.
-3. Include every acceptance criterion status.
-4. Include evidence for criteria that are `failed`, `not checked`, or `not unit-testable`.
-5. Include the refactoring recommendation when static-inspection mode is used.
-6. In the final user message, use this format: `Result: <status>. Report: <path>. Mode: <unit tests | static inspection>. Tests: <passed | failed | not run>. Coverage: <covered> covered, <failed> failed, <not checked> not checked, <not unit-testable> not unit-testable.`
+3. Keep the report compact: summarize the verified worktree, proposal, mode, and test execution before the criteria table.
+4. Include every acceptance criterion as one table row with its status and concise evidence.
+5. Add `Findings` only when a criterion is `failed`, `not checked`, or `not unit-testable`, or when there is a concrete refactoring recommendation. Use it for useful detail or next action, not to restate table rows.
+6. Omit empty sections and coverage counts that can be derived from the criteria table.
+7. In the final user message, use this format: `Result: <status>. Report: <path>. Mode: <unit tests | static inspection>. Tests: <passed | failed | not run>. Coverage: <covered> covered, <failed> failed, <not checked> not checked, <not unit-testable> not unit-testable.`
 
 ## Result classification
 
@@ -66,39 +67,22 @@ A concise verification report at `<deslop-root>/verification/implementation-veri
 ## Report format
 
 ```md
+# Implementation Verification
+
 Result: PASS | FAIL | PARTIAL | INCONCLUSIVE
 Mode: unit tests | static inspection
+Scope: <worktree or named worktree> | <proposal file name under `proposals/`>
+Tests: <passed | failed | not run> [; `<exact command>`] [; <generated test files>]
+Reason: <include only when mode selection or inability to run tests needs explanation>
 
-Verified:
-- Implementation: <worktree or named worktree>
-- Proposal: <proposal file name under `proposals/`>
-- Documentation: <documentation source>
-- Acceptance criteria: <acceptance criteria source>
+| Criterion | Status | Evidence |
+|---|---|---|
+| <criterion id or name> | covered | <test name or `file:line` code evidence> |
+| <criterion id or name> | failed \| not checked \| not unit-testable | <concise reason, relevant failure excerpt, or `file:line`> |
 
-Unit Test Feasibility:
-- Decision: usable | unavailable | partially usable
-- Reason: <why this mode was selected>
-- Refactoring recommendation: <recommendation when unit tests are unavailable, otherwise "None">
+## Findings
 
-Tests:
-- Command: <command or "Not run">
-- Result: passed | failed | not run
-- Test files: <created test files or "None">
-
-Acceptance Criteria Coverage:
-- covered: <count>
-- failed: <count>
-- not checked: <count>
-- not unit-testable: <count>
-
-Acceptance Criteria:
-- <criterion id or name>: covered
-  Evidence: <test name or code evidence>
-- <criterion id or name>: failed | not checked | not unit-testable
-  Evidence: <why this is not covered; include test output or file:line when available>
-
-Unverified:
-- <unverified area or "None">
+- <include only useful failure, limitation, next-action, or concrete refactoring detail; omit this section when there are no findings>
 ```
 
 ## Gotcha list
@@ -110,8 +94,9 @@ Unverified:
 - Create only `<deslop-root>/verification/` inside the Deslop root.
 - Do not verify against a PR plan or task plan.
 - Do not verify against any proposal other than the one given at invocation; do not browse other files under `proposals/`.
-- Always record the verified proposal's file name in the report's `Verified:` section.
+- Always record the verified proposal's file name in the report's `Scope:` line.
 - Do not include per-criterion details or evidence in the final user message.
+- Do not repeat coverage counts, canonical documentation paths, acceptance-criteria paths, or empty sections in the report.
 
 **Testing:**
 - Use existing unit test tooling only.
