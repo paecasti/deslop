@@ -16,18 +16,8 @@ Use the first available model in the recommended mid-tier hierarchy.
 
 ## Validation process
 
-1. Require an explicit proposal file path before working:
-
-```txt
-<deslop-root>/proposals/<idea>.md
-```
-
-2. Treat the parent of `proposals/` as `<deslop-root>`.
-3. Require the proposal content from current context or the proposal file.
-4. Require access to the implementation code in the current worktree, whether its changes are committed, uncommitted, or both.
-5. Require documentation from current context or `<deslop-root>/docs/documentation.md`.
-6. If documentation is not in context and `documentation.md` is missing, tell the user to run `$deslop-understand` first and stop.
-7. Require acceptance criteria from current context or `<deslop-root>/docs/acceptance-criteria.md`.
-8. If acceptance criteria are not in context and `acceptance-criteria.md` is missing, tell the user to run `$deslop-generate-acceptance-criteria` first and stop.
-9. If the implementation worktree or proposal is unavailable, ask for the missing source before verifying.
-10. If validation passes, read `references/body.md` and follow it.
+1. Require an explicit `<deslop-root>/proposals/<idea>.md` path and treat the parent of `proposals/` as `<deslop-root>`.
+2. Require the proposal content and implementation worktree; ask for either unavailable source and stop.
+3. Require documentation from context or `<deslop-root>/docs/documentation.md`; if missing, tell the user to run `$deslop-understand` and stop.
+4. Require acceptance criteria from context or `<deslop-root>/docs/acceptance-criteria.md`; if missing, tell the user to run `$deslop-generate-acceptance-criteria` and stop.
+5. If validation passes, read `references/body.md` and follow it.

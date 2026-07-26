@@ -2,89 +2,56 @@
 
 ## What this produces
 
-A concise verification report at `<deslop-root>/verification/implementation-verification.md` that states whether the implementation is `PASS`, `FAIL`, `PARTIAL`, or `INCONCLUSIVE` against the selected proposal, documentation, and acceptance criteria.
+A concise verification report at `<deslop-root>/verification/implementation-verification.md` that classifies the implementation as `PASS`, `FAIL`, or `PARTIAL` against the selected proposal, documentation, and acceptance criteria.
 
 ## Verification process
 
-1. Establish the implementation worktree to verify:
-   - Use the current worktree by default.
-   - Include committed and uncommitted implementation changes.
-   - Use another worktree only when the user explicitly names it.
-2. Read the Deslop sources of truth, using content from context only when its recorded modification time matches the file's current modification time, and otherwise reading the file and recording its modification time:
-   - The proposal given at invocation.
-   - Documentation from `docs/documentation.md`.
-   - Acceptance criteria from `docs/acceptance-criteria.md`.
-3. Inspect the project's existing test architecture:
-   - Existing unit test framework, scripts, dependencies, and naming conventions.
-   - Existing unit test locations, fixtures, mocks, and helper patterns.
-   - Whether acceptance criteria can be exercised through isolated functions, services, modules, or components without browser, manual UI, live app runtime, network, database, or external service dependencies.
-4. Use unit-test mode when the project already supports unit tests and at least one acceptance criterion can be tested without changing source architecture, dependencies, lockfiles, or test configuration.
-5. Use static-inspection mode when the project lacks a usable unit test setup or the relevant behavior is not reachable through unit-testable boundaries.
+1. Verify the current worktree, including committed and uncommitted changes; use another worktree only when explicitly named.
+2. Read the invoked proposal, `docs/documentation.md`, and `docs/acceptance-criteria.md`. Reuse context only when its recorded modification time matches the file; otherwise read the file and record its modification time.
+3. Inspect the existing unit-test tooling, commands, conventions, locations, fixtures, and mocks, and whether criteria are reachable through isolated boundaries.
+4. Use unit-test mode when at least one criterion can be tested without changing source architecture, dependencies, lockfiles, or test configuration; otherwise use static-inspection mode.
 
 ## Unit-test ownership and placement
 
-1. Organize unit tests by subject under test, not by proposal, acceptance criterion, or verification run.
-2. For each unit-testable criterion, identify the public class, function, service, module, or component that owns the behavior.
-3. Follow the project's existing placement convention:
-   - When tests are colocated, use the canonical test file beside the production subject.
-   - When tests use a separate tree, mirror the subject's path relative to its production root under the corresponding unit-test root.
-   - When tests use separate projects, packages, or assemblies, select the unit-test target corresponding to the production target and mirror the relative production path inside it.
-4. Use the project's canonical test filename, class, namespace, package, and suite naming conventions for that subject.
-5. Before writing, inspect the canonical test files and relevant existing tests. Identify the minimum evidence set of one or more tests that together proves each criterion, reusing existing tests before adding new cases.
-6. Add missing cases to the canonical test file. Create that file only when it does not exist and the existing test tooling will discover it without configuration changes.
-7. When behavior crosses multiple collaborators, place the test at the highest public boundary responsible for that behavior; do not duplicate it in every collaborator's test file.
-8. If multiple equally plausible unit-test targets or subjects remain, ask the user before writing test files.
+1. Organize tests by subject under test and identify the highest public boundary responsible for each behavior.
+2. Map each production subject to its canonical test location and naming conventions, mirroring relative paths across separate test roots, projects, packages, or assemblies.
+3. Reuse existing tests and add missing cases only to the canonical location; create a file only when existing tooling discovers it without configuration changes.
+4. Form the minimum evidence set of one or more tests for each criterion; one test may support multiple criteria without duplication.
+5. Ask the user before writing when the responsible subject or unit-test target remains ambiguous.
 
 ## Unit-test mode
 
-1. Determine whether a complete unit-test evidence set can be formed for every acceptance criterion.
-2. Classify a criterion as `not unit-testable` when an essential part cannot be represented by unit tests; record the reason and do not attempt to verify it through static inspection or any other means.
-3. For each unit-testable criterion, apply the ownership and placement rules to assemble the minimum evidence set of one or more existing or new focused tests.
-4. Test observable behavior required by the acceptance criteria; do not test implementation details unless the criterion requires them.
-5. Run the narrowest existing unit test command that covers the required evidence sets.
-6. Record the exact test command, test files used or changed, pass/fail result, and a concise relevant failure excerpt when tests fail.
-7. Classify a criterion as `covered` only when every test in its required evidence set passes.
-8. Classify a criterion as `failed` when any required test fails because the implementation does not satisfy the criterion.
-9. Classify a criterion as `not checked` when no required test failed but at least one could not run because of an environment or dependency failure unrelated to the implementation; include the relevant command output.
-10. The same test may support multiple criteria; reference it from each criterion without duplicating the test.
-11. When multiple status conditions apply, use this precedence: `failed`, `not unit-testable`, `not checked`, then `covered`.
+1. Apply the ownership rules to form a complete evidence set for every criterion. If an essential part cannot be unit tested, classify the criterion as `not unit-testable`, record why, and do not inspect it statically.
+2. Test observable behavior rather than implementation details unless the criterion requires them.
+3. Run the narrowest command covering the evidence sets; record the command, test files used or changed, result, and a concise relevant failure excerpt.
+4. Classify a criterion as `covered` when every required test passes, `failed` when any required test fails because of the implementation, or `not checked` when no required test failed but at least one could not run for an unrelated environment or dependency reason.
 
 ## Static-inspection mode
 
-1. State that the architecture does not currently support useful acceptance-criteria unit tests.
-2. When inspection reveals a concrete testability seam, record a concise refactoring recommendation; do not add a generic recommendation.
-3. Inspect only implementation code files needed to judge conformance.
-4. Compare implemented behavior and changed surfaces against the selected proposal.
-5. Compare implemented behavior against documentation definitions, constraints, non-goals, and user-visible expectations.
-6. Check every acceptance criterion against implementation code and classify it as `covered`, `failed`, or `not checked`.
-7. Use `failed` when implementation code contradicts or does not satisfy a criterion.
-8. Use `not checked` when insufficient implementation code is available to evaluate a criterion.
-9. For `failed` and `not checked`, include file and line references when available.
-10. Do not mark a criterion `covered` from filenames, comments, TODOs, intended architecture, or declarations without reachable implementation code paths.
+1. Inspect only reachable implementation paths needed to compare the selected proposal, documentation definitions and constraints, and every acceptance criterion.
+2. Classify a criterion as `covered` only from reachable supporting code, `failed` when code contradicts or does not satisfy it, or `not checked` when evidence is insufficient.
+3. For `failed` and `not checked`, include `file:line` evidence when available; never infer coverage from filenames, comments, TODOs, or declarations alone.
+4. Recommend refactoring only when inspection reveals a concrete testability seam.
 
 ## Report process
 
-1. Create `<deslop-root>/verification/` if it does not exist.
-2. Write the report to `<deslop-root>/verification/implementation-verification.md`.
-3. Keep the report compact: summarize the verified worktree, proposal, mode, and test execution before the criteria table.
-4. Include every acceptance criterion as one table row with its status and complete concise evidence set.
-5. Add `Findings` only when a criterion is `failed`, `not checked`, or `not unit-testable`, or when there is a concrete refactoring recommendation. Use it for useful detail or next action, not to restate table rows.
-6. Omit empty sections and coverage counts that can be derived from the criteria table.
-7. In the final user message, use this format: `Result: <status>. Report: <path>. Mode: <unit tests | static inspection>. Tests: <passed | failed | not run>. Coverage: <covered> covered, <failed> failed, <not checked> not checked, <not unit-testable> not unit-testable.`
+1. Create `<deslop-root>/verification/` when needed and write `implementation-verification.md` using the format below.
+2. Keep one row per criterion with its complete concise evidence set; separate multiple `file::test` references with semicolons.
+3. Add `Findings` only for useful failure, limitation, next-action, or concrete refactoring detail; omit it and other optional lines when empty.
+4. In the final user message, use: `Result: <status>. Report: <path>. Mode: <unit tests | static inspection>. Tests: <passed | failed | not run>. Coverage: <covered> covered, <failed> failed, <not checked> not checked, <not unit-testable> not unit-testable.`
 
 ## Result classification
 
-- `PASS`: Unit-test mode has all criteria covered by passing tests, with no `failed`, `not checked`, or `not unit-testable` criteria, or static-inspection mode covers every criterion without contradiction.
+- `PASS`: Every criterion is `covered`.
 - `FAIL`: Any unit test fails because the implementation does not satisfy an acceptance criterion, or static inspection shows implementation code contradicts the proposal, documentation, or acceptance criteria.
 - `PARTIAL`: At least one criterion is `not checked` or `not unit-testable`, with no failed criterion.
-- `INCONCLUSIVE`: Required sources, implementation code files, or verification prerequisites were unavailable.
 
 ## Report format
 
 ```md
 # Implementation Verification
 
-Result: PASS | FAIL | PARTIAL | INCONCLUSIVE
+Result: PASS | FAIL | PARTIAL
 Mode: unit tests | static inspection
 Scope: <worktree or named worktree> | <proposal file name under `proposals/`>
 Tests: <passed | failed | not run> [; `<exact command>`] [; <test files used or changed>]
@@ -104,21 +71,11 @@ Reason: <include only when mode selection or inability to run tests needs explan
 
 **Scope:**
 - Verify only; do not fix implementation failures unless the user explicitly changes the task.
-- Create or modify only verification reports and canonical unit-test files needed for acceptance-criteria verification.
-- Do not modify implementation source, dependencies, lockfiles, generated artifacts, or test configuration.
+- Create or modify only the verification report and canonical unit-test files; do not modify implementation source, dependencies, lockfiles, generated artifacts, or test configuration.
 - Create only `<deslop-root>/verification/` inside the Deslop root.
-- Do not verify against a PR plan or task plan.
-- Do not verify against any proposal other than the one given at invocation; do not browse other files under `proposals/`.
-- Always record the verified proposal's file name in the report's `Scope:` line.
+- Verify only against the invoked proposal, documentation, and acceptance criteria; do not use plans or browse other proposals.
 - Do not include per-criterion details or evidence in the final user message.
-- Do not repeat coverage counts, canonical documentation paths, acceptance-criteria paths, or empty sections in the report.
 
 **Testing:**
-- Use existing unit test tooling only.
-- Do not create test files named after a proposal, acceptance criterion, or verification run.
-- Do not duplicate behavior across test files when an existing canonical test already proves it.
-- Keep one report row per criterion and separate multiple `file::test` references with semicolons; do not use embedded HTML line breaks.
-- Do not install packages or add test frameworks.
+- Use existing unit-test tooling only; do not install packages or frameworks.
 - Do not use browser checks, manual UI checks, live app runtime checks, network calls, databases, or external services as unit-test evidence.
-- Do not create brittle tests that assert private implementation details when behavior can be tested.
-- Do not classify an untestable criterion as failed solely because it is not unit-testable.
