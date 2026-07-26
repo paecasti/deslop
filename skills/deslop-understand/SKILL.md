@@ -7,13 +7,6 @@ argument-hint: "../<deslop-root>/<background>"
 
 # Deslop Understand
 
-## Mid-tier model hierarchy
-
-1. `codex-5.4`
-2. `sonnet-4.6`
-
-Use the first available model in the recommended mid-tier hierarchy.
-
 ## Validation process
 
 1. Require an explicit background folder path before working:

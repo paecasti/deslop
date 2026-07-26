@@ -7,13 +7,6 @@ argument-hint: "[../<deslop-root>] [idea]"
 
 # Deslop Propose
 
-## Mid-tier model hierarchy
-
-1. `codex-5.4`
-2. `sonnet-4.6`
-
-Use the first available model in the recommended mid-tier hierarchy.
-
 ## Validation process
 
 1. Resolve `<deslop-root>` from an explicit folder argument when provided, otherwise from `active_deslop_root`; an explicit folder overrides memory, and a missing, stale, or ambiguous root must be requested before continuing.

@@ -7,13 +7,6 @@ argument-hint: "[../<deslop-root>/proposals/<idea>.md]"
 
 # Deslop Verify Implementation
 
-## Mid-tier model hierarchy
-
-1. `codex-5.4`
-2. `sonnet-4.6`
-
-Use the first available model in the recommended mid-tier hierarchy.
-
 ## Validation process
 
 1. Resolve the proposal path from an explicit argument when provided, otherwise from `active_proposal`; explicit input overrides memory, and a missing, stale, or ambiguous proposal must be requested before continuing.

@@ -7,13 +7,6 @@ argument-hint: "[../<deslop-root>] [count]"
 
 # Deslop Brainstorm Proposals
 
-## Mid-tier model hierarchy
-
-1. `sonnet-4.6`
-2. `codex-5.4`
-
-Use the first available model in the recommended mid-tier hierarchy.
-
 ## Validation process
 
 1. Resolve `<deslop-root>` from an explicit folder argument when provided, otherwise from `active_deslop_root`; an explicit folder overrides memory, and a missing, stale, or ambiguous root must be requested before continuing.

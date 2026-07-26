@@ -7,13 +7,6 @@ argument-hint: "[../<deslop-root>]"
 
 # Deslop Generate Acceptance Criteria
 
-## Mid-tier model hierarchy
-
-1. `codex-5.4`
-2. `sonnet-4.6`
-
-Use the first available model in the recommended mid-tier hierarchy.
-
 ## Validation process
 
 1. Resolve `<deslop-root>` from an explicit argument when provided, otherwise from `active_deslop_root`; explicit input overrides memory, and a missing, stale, or ambiguous root must be requested before continuing.
