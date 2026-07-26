@@ -68,6 +68,8 @@ The main process is intentionally short:
 6. `$deslop-plan-prs` turns an accepted proposal into a PR-by-PR implementation plan. Alternatively, `$deslop-plan-issue` turns the same proposal into a single self-contained, commit-by-commit issue draft that a simpler implementing agent can execute on its own.
 7. `$deslop-verify-implementation` compares the completed implementation against the proposal, documentation, and acceptance criteria.
 
+Within one conversation, `$deslop-understand` establishes the active Deslop root and `$deslop-propose` establishes the active proposal. Later skills may omit those paths while they remain available and unambiguous; an explicit path switches the active context, and a fresh session asks for the required path again.
+
 The important boundary is that acceptance criteria become the downstream contract. Once they exist, planning and verification should be judged against them, not against a loose memory of the original request.
 
 That is the philosophy: less system, more judgment. Less technological perfection, more user control. Deslop does not try to be the best universal process for building software. It tries to be a set of simple tools that help engineers keep clarity, make decisions, and verify results without losing freedom.

@@ -31,4 +31,5 @@ Use the first available model in the recommended mid-tier hierarchy.
 ```
 
 5. If `<background>/` is missing, or it is empty and no background material is in context, tell the user and stop.
-6. If validation passes, read `references/body.md` and follow it.
+6. Remember the normalized `<deslop-root>` as `active_deslop_root` for the current session and clear any `active_proposal`.
+7. If validation passes, read `references/body.md` and follow it.

@@ -39,7 +39,7 @@ One decision-ready proposal at `<deslop-root>/proposals/proposal-<idea>.md` deri
 ```
 
 11. Use `unknown` for a metric value only when it cannot be inferred, and explain why in the notes cell.
-12. Record the modification time of the written proposal file so later Deslop skills in the same session can detect user edits.
+12. Record the written proposal's modification time, remember its normalized path as `active_proposal`, and remember its root as `active_deslop_root` for the current session.
 13. End by telling the user the proposal file created and that it is ready to accept, reject, revise, compare with another proposal, or plan.
 14. Suggest running `$deslop-plan-prs` for the same Deslop root after the proposal is accepted or chosen.
 

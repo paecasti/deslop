@@ -1,8 +1,8 @@
 ---
 name: deslop-generate-acceptance-criteria
 disable-model-invocation: true
-description: Generate acceptance criteria from a deslop-understand documentation.md file. Use only when explicitly invoked as $deslop-generate-acceptance-criteria with a Deslop root; do not implement or propose solutions.
-argument-hint: "../<deslop-root>"
+description: Generate acceptance criteria from a deslop-understand documentation.md file. Use only when explicitly invoked as $deslop-generate-acceptance-criteria; resolve the Deslop root from the argument or active session context and do not implement or propose solutions.
+argument-hint: "[../<deslop-root>]"
 ---
 
 # Deslop Generate Acceptance Criteria
@@ -16,13 +16,8 @@ Use the first available model in the recommended mid-tier hierarchy.
 
 ## Validation process
 
-1. Require an explicit Deslop root path before working:
-
-```txt
-<deslop-root>
-```
-
-2. Treat the Deslop root as any folder the user chooses for this Deslop run.
+1. Resolve `<deslop-root>` from an explicit argument when provided, otherwise from `active_deslop_root`; explicit input overrides memory, and a missing, stale, or ambiguous root must be requested before continuing.
+2. Remember the normalized root as `active_deslop_root` and clear `active_proposal` when it belongs to another root.
 3. Require documentation from current context or this file:
 
 ```txt

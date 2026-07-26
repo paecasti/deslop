@@ -1,8 +1,8 @@
 ---
 name: deslop-plan-prs
 disable-model-invocation: true
-description: Create a PR-by-PR execution plan from a completed Deslop proposal, documentation, and acceptance criteria. Use only when explicitly invoked as $deslop-plan-prs with a proposal file path; write files under `<deslop-root>/plan`.
-argument-hint: "../<deslop-root>/proposals/<idea>.md"
+description: Create a PR-by-PR execution plan from a completed Deslop proposal, documentation, and acceptance criteria. Use only when explicitly invoked as $deslop-plan-prs; resolve the proposal from the argument or active session context and write files under `<deslop-root>/plan`.
+argument-hint: "[../<deslop-root>/proposals/<idea>.md]"
 ---
 
 # Deslop Plan PRs
@@ -16,13 +16,8 @@ Use the first available model in the recommended mid-tier hierarchy.
 
 ## Validation process
 
-1. Require an explicit proposal file path before working:
-
-```txt
-<deslop-root>/proposals/<idea>.md
-```
-
-2. Treat the parent of `proposals/` as `<deslop-root>`.
+1. Resolve the proposal path from an explicit argument when provided, otherwise from `active_proposal`; explicit input overrides memory, and a missing, stale, or ambiguous proposal must be requested before continuing.
+2. Require `<deslop-root>/proposals/<idea>.md`, derive its root, and remember both normalized paths as `active_proposal` and `active_deslop_root`.
 3. Require the proposal content from current context or the proposal file.
 4. Require documentation from current context or this file:
 

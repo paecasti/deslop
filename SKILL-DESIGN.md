@@ -35,6 +35,8 @@ Prefer a clear stop over a clever guess.
 
 Every skill must be able to run in a fresh session. The files inside the Deslop root are the only state carried between skills; conversation context is just an optimization for warm sessions. This is why each skill is self-contained, and why `$deslop-plan-issue` embeds everything the implementing agent needs instead of referencing Deslop files.
 
+Warm sessions remember only two normalized paths: `active_deslop_root` and `active_proposal`. `$deslop-understand` always requires an explicit background folder, derives and records the root, and clears the proposal. Root-based skills use an explicit root or the active root; `$deslop-propose` records the proposal it creates; proposal-based skills use an explicit proposal or the active proposal and derive its root. Explicit input overrides memory, switching roots clears a proposal from another root, and missing, stale, or ambiguous context must be requested. Fresh sessions simply request the required path.
+
 Content already in context may be reused, but only when it is fresh:
 
 - Whenever a skill writes or reads a standard artifact (`documentation.md`, `acceptance-criteria.md`, proposal files), it records the file's modification time.
