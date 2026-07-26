@@ -30,23 +30,24 @@ A concise verification report at `<deslop-root>/verification/implementation-veri
    - When tests use a separate tree, mirror the subject's path relative to its production root under the corresponding unit-test root.
    - When tests use separate projects, packages, or assemblies, select the unit-test target corresponding to the production target and mirror the relative production path inside it.
 4. Use the project's canonical test filename, class, namespace, package, and suite naming conventions for that subject.
-5. Before writing, inspect the canonical test file and relevant existing tests. Reuse an existing test as evidence when it already proves the criterion.
+5. Before writing, inspect the canonical test files and relevant existing tests. Identify the minimum evidence set of one or more tests that together proves each criterion, reusing existing tests before adding new cases.
 6. Add missing cases to the canonical test file. Create that file only when it does not exist and the existing test tooling will discover it without configuration changes.
 7. When behavior crosses multiple collaborators, place the test at the highest public boundary responsible for that behavior; do not duplicate it in every collaborator's test file.
 8. If multiple equally plausible unit-test targets or subjects remain, ask the user before writing test files.
 
 ## Unit-test mode
 
-1. Map every acceptance criterion to `unit-testable` or `not unit-testable`.
-2. For each `not unit-testable` criterion, record the reason in the report; do not attempt to verify it through static inspection or any other means.
-3. For each `unit-testable` criterion, apply the ownership and placement rules, reusing existing coverage before adding a focused test case.
+1. Determine whether a complete unit-test evidence set can be formed for every acceptance criterion.
+2. Classify a criterion as `not unit-testable` when an essential part cannot be represented by unit tests; record the reason and do not attempt to verify it through static inspection or any other means.
+3. For each unit-testable criterion, apply the ownership and placement rules to assemble the minimum evidence set of one or more existing or new focused tests.
 4. Test observable behavior required by the acceptance criteria; do not test implementation details unless the criterion requires them.
-5. Run the narrowest existing unit test command that covers the selected tests.
+5. Run the narrowest existing unit test command that covers the required evidence sets.
 6. Record the exact test command, test files used or changed, pass/fail result, and a concise relevant failure excerpt when tests fail.
-7. Classify criteria with passing tests as `covered`.
-8. Classify criteria with failing tests as `failed`.
-9. Classify criteria that cannot be represented as unit tests as `not unit-testable`.
-10. If the unit test command cannot run because of environment or dependency failure unrelated to the implementation, classify affected criteria as `not checked` and include the command output.
+7. Classify a criterion as `covered` only when every test in its required evidence set passes.
+8. Classify a criterion as `failed` when any required test fails because the implementation does not satisfy the criterion.
+9. Classify a criterion as `not checked` when no required test failed but at least one could not run because of an environment or dependency failure unrelated to the implementation; include the relevant command output.
+10. The same test may support multiple criteria; reference it from each criterion without duplicating the test.
+11. When multiple status conditions apply, use this precedence: `failed`, `not unit-testable`, `not checked`, then `covered`.
 
 ## Static-inspection mode
 
@@ -66,7 +67,7 @@ A concise verification report at `<deslop-root>/verification/implementation-veri
 1. Create `<deslop-root>/verification/` if it does not exist.
 2. Write the report to `<deslop-root>/verification/implementation-verification.md`.
 3. Keep the report compact: summarize the verified worktree, proposal, mode, and test execution before the criteria table.
-4. Include every acceptance criterion as one table row with its status and concise evidence.
+4. Include every acceptance criterion as one table row with its status and complete concise evidence set.
 5. Add `Findings` only when a criterion is `failed`, `not checked`, or `not unit-testable`, or when there is a concrete refactoring recommendation. Use it for useful detail or next action, not to restate table rows.
 6. Omit empty sections and coverage counts that can be derived from the criteria table.
 7. In the final user message, use this format: `Result: <status>. Report: <path>. Mode: <unit tests | static inspection>. Tests: <passed | failed | not run>. Coverage: <covered> covered, <failed> failed, <not checked> not checked, <not unit-testable> not unit-testable.`
@@ -91,8 +92,8 @@ Reason: <include only when mode selection or inability to run tests needs explan
 
 | Criterion | Status | Evidence |
 |---|---|---|
-| <criterion id or name> | covered | <test name or `file:line` code evidence> |
-| <criterion id or name> | failed \| not checked \| not unit-testable | <concise reason, relevant failure excerpt, or `file:line`> |
+| <criterion id or name> | covered | <one or more `file::test` references separated by semicolons, or `file:line` code evidence> |
+| <criterion id or name> | failed \| not checked \| not unit-testable | <test references, concise reason, relevant failure excerpt, or `file:line`> |
 
 ## Findings
 
@@ -116,6 +117,7 @@ Reason: <include only when mode selection or inability to run tests needs explan
 - Use existing unit test tooling only.
 - Do not create test files named after a proposal, acceptance criterion, or verification run.
 - Do not duplicate behavior across test files when an existing canonical test already proves it.
+- Keep one report row per criterion and separate multiple `file::test` references with semicolons; do not use embedded HTML line breaks.
 - Do not install packages or add test frameworks.
 - Do not use browser checks, manual UI checks, live app runtime checks, network calls, databases, or external services as unit-test evidence.
 - Do not create brittle tests that assert private implementation details when behavior can be tested.
